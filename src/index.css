@@ -1,13 +1,243 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap");
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+:root {
+  --clr-gray-900: #222222;
+  --clr-gray-800: #333333;
+  --clr-gray-100: #f7f7f7;
+  --clr-black: #000;
+  --clr-white: #fff;
+  --clr-blue: #234ec4;
+  --clr-red: #d62b47;
+  --clr-green: #5ac04a;
+  --clr-border: #dddddd;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Readex Pro", sans-serif, "Segoe UI", "Roboto";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/**/
+
+/* layout */
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
+}
+body {
+  /* background: #f1f1f1; */
+  margin: 0;
+  font-family: "Poppins";
+}
+
+ul {
+  list-style-type: none;
+}
+
+.flex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 45%;
+}
+.flex-header li {
+  border-left: 1px solid #ccc;
+}
+.flex-header a {
+  color: #555;
+  text-decoration: none;
+  transition: 0.3s all;
+  width: 100%;
+  padding: 5px 12px;
+}
+
+.flex-header li:hover a {
+  color: #111;
+  font-weight: 700;
+}
+
+/* #234EC4 */
+.flex-icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: #eee;
+  width: 18%;
+}
+.flex-icon li {
+  color: #111;
+}
+.flex-icon li a {
+  color: #111;
+  text-decoration: none;
+}
+
+.MuiAlert-icon.css-1ytlwq5-MuiAlert-icon {
+  display: none;
+}
+
+.MuiAlert-message {
+  display: flex;
+  width: 50%;
+  align-items: center;
+}
+.MuiAlert-message p {
+  margin: 0;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 1000px) {
+  .MuiAlert-message {
+    width: 100%;
+    justify-content: center;
+  }
+  .MuiBox-root.css-1hskriy {
+    padding: 30px 10px;
+    font-size: 20px;
+  }
+  .MuiBox-root.css-1hskriy li {
+    width: 100%;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .MuiBox-root.css-1hskriy li::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: #234ec4;
+    transition: 0.3s all;
+  }
+  .MuiBox-root.css-1hskriy li:hover::before {
+    width: 100%;
+  }
+  .MuiBox-root.css-1hskriy a {
+    text-decoration: none;
+    color: #555;
+    display: block;
+  }
+  .css-h4y409-MuiList-root {
+    width: 100%;
+  }
+}
+
+.MuiPaper-root {
+  border-radius: 14px !important;
+  padding: 2px 15px !important;
+  font-size: 13px !important;
+}
+.MuiPaper-root span {
+  color: #fff;
+  margin: 0 20px;
+}
+
+/* Mobile nav bar  */
+.flex-col-mobile {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 5px;
+}
+
+/* Start Player Style */
+.player {
+  height: 270px;
+  background-image: url("./assets/images/backgroundPlayer.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+.player::before {
+  content: "";
+  background: linear-gradient(to top, #3d195b, #3d195b);
+  opacity: 0.2;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.player img {
+  border-radius: 50%;
+}
+
+.css-xkzfqe-MuiStack-root {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+
+.MuiList-root.MuiList-padding.css-h4y409-MuiList-root {
+  padding: 0;
+  color: #4d4d4d;
 }
