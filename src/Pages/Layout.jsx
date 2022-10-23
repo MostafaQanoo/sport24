@@ -1,14 +1,10 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import "./style.css";
 import { Stack, useMediaQuery } from "@mui/material";
 import { Container } from "@mui/system";
 import { useState } from "react";
-import SideInfo from "../Components/content/SideInfo";
-import Footer from "../Components/Footer";
-import Navbar from "../Components/Navbar";
-import NavbarMobile from "../Components/NavbarMobile";
-import TopNav from "../Components/TopNav";
+import { SideInfo, Footer, Navbar, NavbarMobile, TopNav } from "../Components";
+import "./style.css";
 
 const Layout = () => {
   const matches = useMediaQuery("(max-width:1000px)");

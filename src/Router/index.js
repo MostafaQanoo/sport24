@@ -1,6 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout, Home } from "../Pages";
-import MatchOverview from "./../Pages/MatchOverview";
+import Match from "../Pages/Match";
+import {
+  MatchOverview,
+  MatchFormation,
+  MatchEvents,
+  MatchStatistics,
+} from "../Components/Match";
 
 const router = createBrowserRouter([
   {
@@ -13,9 +19,35 @@ const router = createBrowserRouter([
       },
       {
         path: "match/:id",
-        element: <MatchOverview />,
+        element: <Match />,
+        children: [
+          {
+            index: true,
+            element: <MatchOverview />,
+          },
+          {
+            path: "formation",
+            element: <MatchFormation />,
+          },
+          {
+            path: "events",
+            element: <MatchEvents />,
+          },
+          {
+            path: "statistics",
+            element: <MatchStatistics />,
+          },
+        ],
       },
     ],
+  },
+  {
+    path: "*",
+    element: (
+      <div>
+        <h1>Not Found 404 Error</h1>
+      </div>
+    ),
   },
 ]);
 

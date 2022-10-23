@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap"); */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -15,6 +15,8 @@ code {
   --clr-red: #d62b47;
   --clr-green: #5ac04a;
   --clr-border: #dddddd;
+  --primary: #1aac83;
+  --error: #e7195a;
 }
 
 *,
@@ -81,18 +83,6 @@ svg {
 }
 
 /**/
-
-/* layout */
-:root {
-  --primary: #1aac83;
-  --error: #e7195a;
-}
-body {
-  /* background: #f1f1f1; */
-  margin: 0;
-  font-family: "Poppins";
-}
-
 ul {
   list-style-type: none;
 }
@@ -119,7 +109,6 @@ ul {
   font-weight: 700;
 }
 
-/* #234EC4 */
 .flex-icon {
   display: flex;
   justify-content: space-between;

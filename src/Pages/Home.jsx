@@ -1,7 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import MainInfo from "../Components/content/MainInfo";
-import TransitionPlayer from "../Components/content/TransitionPlayer";
+import { MainInfo, TransitionPlayer } from "../Components";
 // Image
 import Player from "../assets/images/player.png";
 
