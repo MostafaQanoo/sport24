@@ -1,3 +1,3 @@
 export {
   getToken
-} from './api';
+} from './user';
