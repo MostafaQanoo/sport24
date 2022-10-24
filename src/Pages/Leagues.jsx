@@ -1,5 +1,5 @@
 import React from 'react'
-import { ArrangeTable, PageBanner } from '../Components'
+import { ArrangeTable, PageBanner, TeamStatistics } from '../Components'
 import PremierLeague from '../assets/images/premier-league.png'
 
 const Leagues = () => {
@@ -7,6 +7,7 @@ const Leagues = () => {
     <>
       <PageBanner leagueImage={PremierLeague} leagueName={'الدوري الممتاز'} />
       <ArrangeTable />
+      <TeamStatistics />
     </>
   )
 }

@@ -272,3 +272,37 @@ table .css-1ygcj2i-MuiTableCell-root, table .css-1ex1afd-MuiTableCell-root{
 .arrange-table-sec .red{
   color: red;
 }
+
+/* Single Statistics */
+.stats-sec{
+  margin-bottom: 2rem;
+}
+.single-stat .stat-title{
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.single-stat .card-body{
+  background-color: #FAFAFA;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+.single-stat ul .item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .3rem 1rem;
+}
+.single-stat ul .item:not(:last-child){
+  border-bottom: 1px solid #E5E5E5;
+}
+.item .team{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.item .team img{
+  width: 45px;
+}
+.item .value{
+  color: #234EC4;
+}
