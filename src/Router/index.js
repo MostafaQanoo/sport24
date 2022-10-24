@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Layout, Home } from "../Pages";
+import { Layout, Home, PlayerPage } from "../Pages";
 import Match from "../Pages/Match";
 import {
   MatchOverview,
@@ -16,6 +16,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: 'player/:id',
+        element: <PlayerPage />,
       },
       {
         path: "match/:id",

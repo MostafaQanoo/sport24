@@ -1,5 +1,4 @@
 import { Box, List, Typography, useMediaQuery } from "@mui/material";
-import { Stack, width } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import Lego from "../../assets/images/lego.png";
 
@@ -12,7 +11,7 @@ const SideInfo = () => {
   }, [matches]);
 
   return (
-    <Box flex="1" display={value}>
+    <Box flex="1" display={value} maxWidth="17%">
       <List
         sx={{ background: "#F8F8F8", padding: "2px 2px" }}
         direction="column">
@@ -24,7 +23,6 @@ const SideInfo = () => {
               alignItems: "center",
               justifyContent: "start",
               padding: "8px 5px",
-              width: "80%",
               borderBottom: "1px solid rgb(225 225 225)",
             }}>
             <img

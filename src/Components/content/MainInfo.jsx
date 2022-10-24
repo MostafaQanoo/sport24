@@ -1,4 +1,4 @@
-import { Box, List, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import EmojiFlagsIcon from "@mui/icons-material/EmojiFlags";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";

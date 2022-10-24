@@ -1,10 +1,8 @@
-import { AccountCircle, Image } from "@mui/icons-material";
-import { Button, IconButton } from "@mui/material";
-import { Box, Stack } from "@mui/system";
+import { AccountCircle } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+import { Box } from "@mui/system";
 import React from "react";
-import MenuImage from "../assets/images/Icon feather-menu.png";
 import Sport from "../assets/images/Sport.png";
-import GroupI from "../assets/images/Group 3794.png";
 import styled from "@emotion/styled";
 import Sidebar from "./Sidebar";
 

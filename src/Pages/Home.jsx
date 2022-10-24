@@ -1,24 +1,11 @@
-import React from "react";
-import { Box } from "@mui/material";
-import { MainInfo, TransitionPlayer } from "../Components";
-// Image
-import Player from "../assets/images/player.png";
+import React from 'react'
 
 const Home = () => {
   return (
-    <>
-      <Box flex="3">
-        <main>
-          <MainInfo Image={Player} />
-        </main>
-      </Box>
-      <Box flex="1">
-        <aside>
-          <TransitionPlayer />
-        </aside>
-      </Box>
-    </>
-  );
-};
+    <div>
+      <h1>Home Page</h1>
+    </div>
+  )
+}
 
-export default Home;
+export default Home
