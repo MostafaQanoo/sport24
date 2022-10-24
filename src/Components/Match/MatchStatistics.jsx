@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "@mui/material";
 
 const MatchStatistics = () => {
-  const [match, setMatch] = React.useState([
+  const match = [
     {
       id: 1,
       nameEn: "pneumatic docking",
@@ -73,7 +73,7 @@ const MatchStatistics = () => {
       nameEn: "Passing accuracy",
       nameAr: "دقة التمرير",
     },
-  ]);
+  ];
   return (
     <Box className="statistic-cards">
       {match.map(({ id, nameAr }) => (

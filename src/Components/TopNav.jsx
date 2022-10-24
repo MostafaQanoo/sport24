@@ -1,6 +1,4 @@
-import { Image } from "@mui/icons-material";
-import { Button } from "@mui/material";
-import { Box, Stack } from "@mui/system";
+import { Box } from "@mui/system";
 import React from "react";
 import MenuImage from "../assets/images/Icon feather-menu.png";
 import Sport from "../assets/images/Sport.png";

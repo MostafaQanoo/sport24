@@ -1,18 +1,13 @@
 import {
   Alert,
-  AppBar,
   Box,
-  Button,
   IconButton,
   List,
-  Toolbar,
   Typography,
-  useMediaQuery,
 } from "@mui/material";
 import { Stack } from "@mui/system";
 import React from "react";
 import { Link } from "react-router-dom";
-import Sidebar from "./Sidebar";
 import SearchIcon from "@mui/icons-material/Search";
 import { AccountCircle } from "@mui/icons-material";
 

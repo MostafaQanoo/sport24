@@ -36,6 +36,12 @@
   width: calc(100% - var(--side-width));
   height: 100%;
 }
+.main-page{
+  flex: 1;
+}
+.left-side{
+  max-width: 17%;
+}
 
 .header-img {
   height: 355px;

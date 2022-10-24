@@ -11,3 +11,4 @@ export { default as NavbarMobile } from "./NavbarMobile";
 export { default as Sidebar } from "./Sidebar";
 export { default as TableData } from "./TableData";
 export { default as TopNav } from "./TopNav";
+export { default as LeftSide } from "./LeftSide";
