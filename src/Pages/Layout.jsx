@@ -16,13 +16,13 @@ const Layout = () => {
         <NavbarMobile mobileBar={mobileBar} setMobileBar={setMobileBar} />
       ) : (
         <>
-          <Container>
+          <Container maxWidth="xl" className="container">
             <TopNav />
             <Navbar />
           </Container>
         </>
       )}
-      <Container>
+      <Container maxWidth="xl" className="container">
         <Stack direction="row" gap="0 10px">
           <SideInfo />
           <Outlet />

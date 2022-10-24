@@ -99,7 +99,7 @@ const CopyRightWord = Styled.p`
 function Footer() {
   return (
     <MainContainer>
-      <Container>
+      <Container maxWidth="xl" className="container">
         <ContainerGoTop>
           <GoToTopStyle>العودة الى الاعلى</GoToTopStyle>
           <GoTopIcon src={GoTop} />
