@@ -1,13 +1,24 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Box } from "@mui/material";
+import { MainInfo, TransitionPlayer } from "../Components";
+// Image
+import Player from "../assets/images/player.png";
 
 const Home = () => {
   return (
-    <div>
-      <Link to="/about">About</Link>
-      <h1>Home Page</h1>
-    </div>
-  )
-}
+    <>
+      <Box flex="3">
+        <main>
+          <MainInfo Image={Player} />
+        </main>
+      </Box>
+      <Box flex="1">
+        <aside>
+          <TransitionPlayer />
+        </aside>
+      </Box>
+    </>
+  );
+};
 
-export default Home
+export default Home;
