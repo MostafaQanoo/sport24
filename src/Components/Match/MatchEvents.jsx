@@ -10,14 +10,33 @@ import {
   TimelineOppositeContent,
 } from "@mui/lab";
 import { football, card, exchange } from "./../../assets/icons";
+import { teamA, teamB } from "../../assets/images";
 
 const MatchEvents = () => {
   return (
     <Box>
-      <Typography variant="h6" sx={{ my: "30px", textAlign: "center" }}>
+      <Typography variant="h6" sx={{ mt: "30px", textAlign: "center" }}>
         بداية المبارة
       </Typography>
+      <Box className="teams">
+        <Box className="team-event">
+          <img src={teamA} alt="team A" />
+          <p>ريال مدريد</p>
+        </Box>
+        <Box className="team-event">
+          <img src={teamB} alt="team B" />
+          <p>برشلونة</p>
+        </Box>
+      </Box>
       <Timeline>
+        <TimelineItem>
+          <TimelineOppositeContent color="text.secondary"></TimelineOppositeContent>
+          <TimelineSeparator>
+            <TimelineDot className="timeline-dot">0</TimelineDot>
+            <TimelineConnector />
+          </TimelineSeparator>
+          <TimelineContent></TimelineContent>
+        </TimelineItem>
         <TimelineItem>
           <TimelineOppositeContent color="text.secondary">
             كريم بنزيمة ’9
@@ -64,10 +83,17 @@ const MatchEvents = () => {
             </TimelineDot>
             <TimelineConnector />
           </TimelineSeparator>
-          <TimelineContent>90</TimelineContent>
+          <TimelineContent>80</TimelineContent>
+        </TimelineItem>
+        <TimelineItem>
+          <TimelineOppositeContent color="text.secondary"></TimelineOppositeContent>
+          <TimelineSeparator>
+            <TimelineDot className="timeline-dot">90</TimelineDot>
+          </TimelineSeparator>
+          <TimelineContent></TimelineContent>
         </TimelineItem>
       </Timeline>
-      <Typography variant="h6" sx={{ my: "30px", textAlign: "center" }}>
+      <Typography variant="h6" sx={{ mb: "30px", textAlign: "center" }}>
         نهاية المبارة
       </Typography>
     </Box>

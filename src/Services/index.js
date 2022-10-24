@@ -1,3 +1,1 @@
-export {
-  getToken
-} from './api';
+export { getToken, getFormation } from "./api";

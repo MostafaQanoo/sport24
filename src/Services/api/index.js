@@ -1,3 +1,1 @@
-export {
-  getToken
-} from './user';
+export { getToken, getFormation } from "./user";

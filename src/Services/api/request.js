@@ -1,17 +1,20 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: 'https://scoresapi.so3ody.com/',
+  baseURL: "https://scoresapi.so3ody.com/api/v1/",
 });
 
-const axiosRequest = async (method, url, data = null) => {
+const axiosRequest = async (method, url, data = null, params = null) => {
+  console.log("url: ", url);
   const config = {
     method,
     url,
     headers: {
-      'Content-Type': 'application/json',
+      authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+      "Content-Type": "application/json",
     },
-    data
+    data,
+    params,
   };
 
   try {
