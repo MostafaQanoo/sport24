@@ -12,3 +12,12 @@ export { default as Sidebar } from "./Sidebar";
 export { default as TableData } from "./TableData";
 export { default as TopNav } from "./TopNav";
 export { default as LeftSide } from "./LeftSide";
+export { default as PageBanner } from "./PageBanner";
+export{
+  ArrangeTable,
+  TeamStatistics
+} from './Leagues';
+export {
+  TeamsSlider,
+  Competitions,
+} from './Home'

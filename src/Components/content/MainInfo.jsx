@@ -21,10 +21,6 @@ const MainInfo = ({ Player }) => {
             direction="row"
             position="relative"
             justifyContent="space-between">
-            {/* font-size: 20px;
-    margin-top: -10px;
-    color: #d2d2d2;
-    margin-left: 6px; */}
             <Box width="20%" display="flex" alignItems="center">
               <EmojiFlagsIcon
                 fontSize="20px"

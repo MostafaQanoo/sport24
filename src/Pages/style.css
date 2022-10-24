@@ -25,19 +25,21 @@
 
 .left-side,
 .right-side {
-  --side-width: 20%;
-  width: var(--side-width);
+  --side-width: 17%;
+  min-width: var(--side-width);
   height: 100%;
   background-color: var(--clr-gray-100);
 }
 
 .main-content {
   flex-grow: 1;
-  width: calc(100% - var(--side-width));
+  width: calc(100% - var(--side-width)*2);
   height: 100%;
 }
 .main-page {
   flex: 1;
+  padding: 0 .5rem;
+  max-width: calc(100% - 18%*2);
 }
 .left-side {
   max-width: 17%;
@@ -66,12 +68,56 @@
   gap: 10px;
 }
 
+.page-banner{
+  height: 335px;
+  width: 100%;
+  background-image: url(../assets/images/header-back.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--clr-white);
+  padding: 4rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
 .body-card {
   display: flex;
   align-items: end;
   justify-content: space-between;
 }
-
+.page-banner .header-card{
+  margin-bottom: 4rem;
+}
+.page-banner .body-card{
+  max-width: 500px;
+  margin: 0 auto;
+  display: block;
+}
+.page-banner .progress-bar{
+  width: 100%;
+  height: 25px;
+  background-color: #623B7C;
+  border-radius: .5rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.progress-bar .progress-bar__progress{
+  background: linear-gradient(to left, #FFD800, #FE2883);
+  height: 100%;
+}
+.page-banner .start-end{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.start-end p{
+  font-size: .8rem;
+}
+.sec-title{
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
 .card-box {
   display: flex;
   align-items: center;
@@ -206,6 +252,123 @@
   background-color: #5d6279;
 }
 
+
+/* Arrange Table */
+.arrange-table-sec{
+  margin-bottom: 1.5rem;
+}
+.arrange-table-sec .css-11xur9t-MuiPaper-root-MuiTableContainer-root{
+  border-radius: 0 !important;
+  box-shadow: none;
+}
+
+table .css-1ygcj2i-MuiTableCell-root, table .css-1ex1afd-MuiTableCell-root{
+  text-align: right;
+}
+
+.arrange-table-sec th{
+  background-color: #FAFAFA;
+  border-color: transparent;
+}
+.arrange-table-sec .red{
+  color: red;
+}
+
+/* Single Statistics */
+.stats-sec{
+  margin-bottom: 2rem;
+}
+.single-stat .stat-title{
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.single-stat .card-body{
+  background-color: #FAFAFA;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+.single-stat ul .item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .3rem 1rem;
+}
+.single-stat ul .item:not(:last-child){
+  border-bottom: 1px solid #E5E5E5;
+}
+.item .team{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.item .team img{
+  width: 45px;
+}
+.item .value{
+  color: #234EC4;
+}
+
+
+/* Home Style */
+.teams-sec {
+  margin-bottom: 3.5rem;
+}
+.teams-sec .single-slide{
+  display: block;
+  padding: .7rem 1rem 1.5rem;
+  border: 2px solid #EEEEEE;
+  border-radius: .7rem;
+  margin: 0 1rem;
+  text-align: center;
+  color: #000;
+  text-decoration: none;
+  position: relative;
+}
+.teams-sec .single-slide img{
+  width: 80px;
+  margin: 0 auto .5rem;
+}
+.teams-sec .single-slide .icon{
+  position: absolute;
+  top: .7rem;
+  right: .7rem;
+  font-size: 1.5rem;
+}
+.teams-sec .splide__arrow{
+  background-color: transparent;
+}
+
+/* Compititions Section */
+.compititions-sec{
+  margin-bottom: 2rem;
+}
+
+.compititions-sec .tabs{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 auto 1rem;
+  background-color: #F4F4F4;
+  border-radius: 3rem;
+  max-width: 500px;
+}
+.tabs .btn{
+  padding: .5rem 1rem;
+  outline: none;
+  box-shadow: none;
+  border-radius: 3rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  text-align: center;
+  width: 28%;
+}
+.tabs .btn.active{
+  background-color: #234EC4;
+  color: #FFF;
+}
+
 .MuiTimelineConnector-root {
   background-color: var(--clr-blue) !important;
   width: 12px !important;
@@ -235,3 +398,4 @@
 .MuiTimelineOppositeContent-positionAlternate {
   text-align: start !important;
 } */
+

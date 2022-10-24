@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Layout, Home, PlayerPage } from "../Pages";
+import { Layout, Home, PlayerPage, Leagues } from "../Pages";
 import Match from "../Pages/Match";
 import {
   MatchOverview,
@@ -20,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: 'player/:id',
         element: <PlayerPage />,
+      },
+      {
+        path: 'league/:id',
+        element: <Leagues />,
       },
       {
         path: "match/:id",

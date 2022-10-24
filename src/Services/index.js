@@ -1,3 +1,6 @@
 export {
-  getToken
+  getToken,
+  getTeams,
+  getCompetitions,
+  getMatches
 } from './api';
