@@ -1,10 +1,11 @@
 import React from 'react'
-import { TeamsSlider } from '../Components'
+import { Competitions, TeamsSlider } from '../Components'
 
 const Home = () => {
   return (
     <div>
       <TeamsSlider />
+      <Competitions />
     </div>
   )
 }

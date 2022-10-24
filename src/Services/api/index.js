@@ -1,4 +1,6 @@
 export {
   getToken,
-  getTeams
+  getTeams,
+  getCompetitions,
+  getMatches
 } from './user';

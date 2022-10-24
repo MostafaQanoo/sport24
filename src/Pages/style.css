@@ -308,7 +308,7 @@ table .css-1ygcj2i-MuiTableCell-root, table .css-1ex1afd-MuiTableCell-root{
 
 /* Home Style */
 .teams-sec {
-  margin-bottom: 1.5rem;
+  margin-bottom: 3.5rem;
 }
 .teams-sec .single-slide{
   display: block;
@@ -333,4 +333,35 @@ table .css-1ygcj2i-MuiTableCell-root, table .css-1ex1afd-MuiTableCell-root{
 }
 .teams-sec .splide__arrow{
   background-color: transparent;
+}
+
+/* Compititions Section */
+.compititions-sec{
+  margin-bottom: 2rem;
+}
+
+.compititions-sec .tabs{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 auto 1rem;
+  background-color: #F4F4F4;
+  border-radius: 3rem;
+  max-width: 500px;
+}
+.tabs .btn{
+  padding: .5rem 1rem;
+  outline: none;
+  box-shadow: none;
+  border-radius: 3rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  text-align: center;
+  width: 28%;
+}
+.tabs .btn.active{
+  background-color: #234EC4;
+  color: #FFF;
 }

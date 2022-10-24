@@ -19,4 +19,5 @@ export{
 } from './Leagues';
 export {
   TeamsSlider,
+  Competitions,
 } from './Home'

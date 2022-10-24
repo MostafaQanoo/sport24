@@ -16,8 +16,6 @@ const TeamsSlider = () => {
     fetchTeams();
   }, []);
 
-  console.log(teams);
-
   return (
     <section className='teams-sec'>
       <h3 className='sec-title'>إختر الفريق</h3>
