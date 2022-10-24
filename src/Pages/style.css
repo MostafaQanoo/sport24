@@ -36,10 +36,10 @@
   width: calc(100% - var(--side-width));
   height: 100%;
 }
-.main-page{
+.main-page {
   flex: 1;
 }
-.left-side{
+.left-side {
   max-width: 17%;
 }
 
@@ -205,3 +205,33 @@
 .bg-gray {
   background-color: #5d6279;
 }
+
+.MuiTimelineConnector-root {
+  background-color: var(--clr-blue) !important;
+  width: 12px !important;
+  height: 50px !important;
+}
+
+.MuiTimelineDot-root {
+  width: 45px !important;
+  height: 45px !important;
+  margin: 0 !important;
+  background-color: var(--clr-white) !important;
+  box-shadow: none !important;
+}
+
+.MuiTimelineContent-root {
+  text-align: start !important;
+}
+
+.MuiTimelineOppositeContent-root {
+  text-align: end !important;
+}
+
+/* .MuiTimelineContent-positionAlternate {
+  text-align: start !important;
+}
+
+.MuiTimelineOppositeContent-positionAlternate {
+  text-align: start !important;
+} */
