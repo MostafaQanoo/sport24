@@ -76,7 +76,7 @@
   background-repeat: no-repeat;
   color: var(--clr-white);
   padding: 4rem 1rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .body-card {
@@ -109,7 +109,14 @@
   justify-content: space-between;
   align-items: center;
 }
-
+.start-end p{
+  font-size: .8rem;
+}
+.sec-title{
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
 .card-box {
   display: flex;
   align-items: center;
@@ -242,4 +249,26 @@
 
 .bg-gray {
   background-color: #5d6279;
+}
+
+
+/* Arrange Table */
+.arrange-table-sec{
+  margin-bottom: 1.5rem;
+}
+.arrange-table-sec .css-11xur9t-MuiPaper-root-MuiTableContainer-root{
+  border-radius: 0 !important;
+  box-shadow: none;
+}
+
+table .css-1ygcj2i-MuiTableCell-root, table .css-1ex1afd-MuiTableCell-root{
+  text-align: right;
+}
+
+.arrange-table-sec th{
+  background-color: #FAFAFA;
+  border-color: transparent;
+}
+.arrange-table-sec .red{
+  color: red;
 }

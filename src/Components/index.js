@@ -13,3 +13,6 @@ export { default as TableData } from "./TableData";
 export { default as TopNav } from "./TopNav";
 export { default as LeftSide } from "./LeftSide";
 export { default as PageBanner } from "./PageBanner";
+export{
+  ArrangeTable
+} from './Leagues'
