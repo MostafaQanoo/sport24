@@ -1,9 +1,10 @@
 import React from 'react'
+import { TeamsSlider } from '../Components'
 
 const Home = () => {
   return (
     <div>
-      <h1>Home Page</h1>
+      <TeamsSlider />
     </div>
   )
 }

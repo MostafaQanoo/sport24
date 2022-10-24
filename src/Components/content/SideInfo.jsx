@@ -11,7 +11,7 @@ const SideInfo = () => {
   }, [matches]);
 
   return (
-    <Box flex="1" display={value} maxWidth="17%">
+    <Box display={value} style={{minWidth: '17%'}}>
       <List
         sx={{ background: "#F8F8F8", padding: "2px 2px" }}
         direction="column">

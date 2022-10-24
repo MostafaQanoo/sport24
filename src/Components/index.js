@@ -16,4 +16,7 @@ export { default as PageBanner } from "./PageBanner";
 export{
   ArrangeTable,
   TeamStatistics
-} from './Leagues'
+} from './Leagues';
+export {
+  TeamsSlider,
+} from './Home'

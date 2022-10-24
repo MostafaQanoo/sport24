@@ -25,23 +25,21 @@
 
 .left-side,
 .right-side {
-  --side-width: 20%;
-  width: var(--side-width);
+  --side-width: 17%;
+  min-width: var(--side-width);
   height: 100%;
   background-color: var(--clr-gray-100);
 }
 
 .main-content {
   flex-grow: 1;
-  width: calc(100% - var(--side-width));
+  width: calc(100% - var(--side-width)*2);
   height: 100%;
 }
 .main-page{
   flex: 1;
   padding: 0 .5rem;
-}
-.left-side{
-  max-width: 17%;
+  max-width: calc(100% - 18%*2);
 }
 
 .header-img {
@@ -305,4 +303,34 @@ table .css-1ygcj2i-MuiTableCell-root, table .css-1ex1afd-MuiTableCell-root{
 }
 .item .value{
   color: #234EC4;
+}
+
+
+/* Home Style */
+.teams-sec {
+  margin-bottom: 1.5rem;
+}
+.teams-sec .single-slide{
+  display: block;
+  padding: .7rem 1rem 1.5rem;
+  border: 2px solid #EEEEEE;
+  border-radius: .7rem;
+  margin: 0 1rem;
+  text-align: center;
+  color: #000;
+  text-decoration: none;
+  position: relative;
+}
+.teams-sec .single-slide img{
+  width: 80px;
+  margin: 0 auto .5rem;
+}
+.teams-sec .single-slide .icon{
+  position: absolute;
+  top: .7rem;
+  right: .7rem;
+  font-size: 1.5rem;
+}
+.teams-sec .splide__arrow{
+  background-color: transparent;
 }
