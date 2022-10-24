@@ -15,11 +15,11 @@ const StackTopBar = styled.div`
 `;
 
 const NavbarMobile = ({ mobileBar, setMobileBar }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  // const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleProfileMenuOpen = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
   const menuId = "primary-search-account-menu";
 
@@ -34,7 +34,7 @@ const NavbarMobile = ({ mobileBar, setMobileBar }) => {
           aria-label="account of current user"
           aria-controls={menuId}
           aria-haspopup="true"
-          onClick={handleProfileMenuOpen}
+          // onClick={handleProfileMenuOpen}
           color="inherit">
           <AccountCircle />
         </IconButton>
