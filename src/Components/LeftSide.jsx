@@ -2,7 +2,7 @@ import React from 'react'
 
 const LeftSide = () => {
   return (
-    <div className='left-side'>LeftSide</div>
+    <aside className='left-side'>LeftSide</aside>
   )
 }
 

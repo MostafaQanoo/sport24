@@ -5,6 +5,7 @@ import { win, lose, draw } from "../../assets/icons";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getFormation, getHeadToHead } from "./../../Services";
+import { Competitions, TeamsSlider } from "../Home";
 
 const MatchOverview = () => {
   const { pathname } = useLocation();

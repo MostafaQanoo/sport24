@@ -19,21 +19,34 @@ const SingleCompetition = ({ compitition, date }) => {
     fetchMatches();
   }, [date]);
 
-  console.log(matches);
+  const setMatchesComponent = (matches) => {
+    if (matches.length === 0){
+      console.log('no matches');
+      return <h1>لا يوجد مباريات</h1>
+    }
+    return matches?.map((match) => (
+      <div>
+        <Link to={`/match/${match?.id}`} key={match?.id}>
+          {match?.teamA?.name} & {match?.teamB?.name}
+        </Link>
+      </div>
+    ))
+  }
 
   return (
     <Accordion>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        {compitition?.name}
+        <div className='compitition'>
+          <img
+            src={`https://cdn.so3ody.com/scores/teams/50x50/${compitition?.id}.png`}
+            alt={compitition?.name}
+            className='comp-image'
+          />
+          <p className='comp-name'>{compitition?.name}</p>
+        </div>
       </AccordionSummary>
       <AccordionDetails>
-        {matches?.map((match) => (
-          <div>
-            <Link to={`/match/${match?.id}`}>
-              {match?.teamA?.name} & {match?.teamB?.name}
-            </Link>
-          </div>
-        ))}
+        {setMatchesComponent(matches)}
       </AccordionDetails>
     </Accordion>
   );

@@ -23,16 +23,14 @@ const TeamsSlider = () => {
         options={{
           perPage: 4,
           drag: true,
-          rewind: true,
           direction: 'rtl',
           pagination: false,
-          loop: true,
-          width: '100%',
+          gap: '1rem',
         }}
       >
-        {teams?.map((team) => (
+        {teams.slice(0,8)?.map((team) => (
           <SplideSlide key={team?.id}>
-            <Link to={`team/${team?.id}`} className='single-slide'>
+            <Link to={`team/${team?.id}`} className="single-slide">
               <img
                 src={`https://cdn.so3ody.com/scores/teams/50x50/${team?.id}.png`}
                 alt={team?.name}
