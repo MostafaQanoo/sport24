@@ -9,7 +9,7 @@ const TeamsSlider = () => {
 
   const fetchTeams = async () => {
     const response = await getTeams();
-    setTeams(response.data.data);
+    setTeams(response.data.data.slice(5, 13));
   };
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const TeamsSlider = () => {
           gap: '1rem',
         }}
       >
-        {teams.slice(0,8)?.map((team) => (
+        {teams?.map((team) => (
           <SplideSlide key={team?.id}>
             <Link to={`team/${team?.id}`} className="single-slide">
               <img
