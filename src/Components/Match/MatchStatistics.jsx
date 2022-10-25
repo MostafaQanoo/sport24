@@ -21,30 +21,25 @@ const MatchStatistics = () => {
     setMatchId(matchId);
   }, [pathname]);
 
-  const { data: formationData } = useQuery(["formation", matchId], () =>
-    getFormation(matchId)
+  const { data: formationData, isLoading } = useQuery(
+    ["formation", matchId],
+    () => getFormation(matchId)
   );
 
-  const { data: headToHeadData } = useQuery(["headToHead", teamsIds], () =>
-    getHeadToHead(teamsIds)
+  const { data: headToHeadData, isLoading: isLoadingHeadToHead } = useQuery(
+    ["headToHead", teamsIds],
+    () => getHeadToHead(teamsIds)
   );
 
-  const { data: statisticsTeamAData } = useQuery(
-    ["statisticsA", teamsIds.teamA, matchId],
-    () => getStatistics(teamsIds?.teamA, matchId)
-  );
-
-  const { data: statisticsTeamBData } = useQuery(
-    ["statisticsB", teamsIds.teamB, matchId],
-    () => getStatistics(teamsIds?.teamB, matchId)
-  );
+  const { data: statisticsTeamsData, isLoading: isLoadingStatistics } =
+    useQuery(["statistics", matchId], () => getStatistics(matchId));
 
   useEffect(() => {
     setTeamsStatistics({
-      teamA: statisticsTeamAData?.data?.data,
-      teamB: statisticsTeamBData?.data?.data,
+      teamA: statisticsTeamsData?.data?.data?.teamA,
+      teamB: statisticsTeamsData?.data?.data?.teamB,
     });
-  }, [statisticsTeamAData, statisticsTeamBData]);
+  }, [statisticsTeamsData]);
 
   useEffect(() => {
     setTeamsIds({
@@ -53,7 +48,8 @@ const MatchStatistics = () => {
     });
   }, [formationData]);
 
-  useEffect(() => {}, [headToHeadData]);
+  if (isLoading || isLoadingHeadToHead || isLoadingStatistics)
+    return <div>تحميل...</div>;
 
   const match = [
     {
@@ -106,13 +102,13 @@ const MatchStatistics = () => {
     },
     {
       id: 10,
-      key: "shotOnTarget",
+      key: "possession",
       nameEn: "possession",
       nameAr: "الإستحواذ",
     },
     {
       id: 11,
-      key: "possession",
+      key: "shotOnTarget",
       nameEn: "Shots on goal",
       nameAr: "تسديدات علي المرمى",
     },

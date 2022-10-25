@@ -24,12 +24,14 @@ const MatchEvents = () => {
     setMatchId(matchId);
   }, [pathname]);
 
-  const { data: formationData } = useQuery(["formation", matchId], () =>
-    getFormation(matchId)
+  const { data: formationData, isLoading } = useQuery(
+    ["formation", matchId],
+    () => getFormation(matchId)
   );
 
-  const { data: eventData } = useQuery(["headToHead", matchId], () =>
-    getEvents(matchId)
+  const { data: eventData, isLoading: isLoadingEvent } = useQuery(
+    ["events", matchId],
+    () => getEvents(matchId)
   );
 
   useEffect(() => {
@@ -42,6 +44,8 @@ const MatchEvents = () => {
 
     setMatches(array);
   }, [eventData]);
+
+  if (isLoading || isLoadingEvent) return <div>تحميل...</div>;
 
   return (
     <Box>
