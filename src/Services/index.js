@@ -7,4 +7,7 @@ export {
   getHeadToHead,
   getEvents,
   getStatistics,
+  getCompTable,
+  getSinglePlayer,
+  getPlayerTransfer
 } from "./api/index";
