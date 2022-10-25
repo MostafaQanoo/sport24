@@ -11,14 +11,8 @@ const SideInfo = () => {
 
   const fetchCompititions = async () => {
     const response = await getCompetitions('');
-    const europComp = await getCompetitions('id=401');
-    const champComp = await getCompetitions('id=400');
-    console.log(europComp?.data?.data[0]);
-    console.log(champComp?.data?.data[0]);
     setCompetitions([
-      ...response.data.data.slice(0, 5),
-      europComp?.data?.data[0],
-      champComp?.data?.data[0],
+      ...response.data.data.slice(0, 5)
     ]);
   };
 
