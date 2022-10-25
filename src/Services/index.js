@@ -8,4 +8,5 @@ export {
   getEvents,
   getStatistics,
   getCompTable,
+  getSinglePlayer
 } from "./api/index";
