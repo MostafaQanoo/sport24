@@ -1,12 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Layout, Home, PlayerPage, Leagues, Team } from "../Pages";
-import Match from "../Pages/Match";
+import { Layout, Home, PlayerPage, Leagues, Team, Match } from "../Pages/index";
 import {
   MatchOverview,
   MatchFormation,
   MatchEvents,
   MatchStatistics,
-} from "../Components/Match";
+} from "../Components/Match/index";
 
 const router = createBrowserRouter([
   {
@@ -18,15 +17,15 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: 'player/:id',
+        path: "player/:id",
         element: <PlayerPage />,
       },
       {
-        path: 'team/:id',
-        element: <Team />
+        path: "team/:id",
+        element: <Team />,
       },
       {
-        path: 'league/:id',
+        path: "league/:id",
         element: <Leagues />,
       },
       {

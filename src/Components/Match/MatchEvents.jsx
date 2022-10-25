@@ -10,7 +10,6 @@ import {
   TimelineOppositeContent,
 } from "@mui/lab";
 import { goal, yellow_card, red_card } from "./../../assets/icons";
-import { teamA, teamB } from "../../assets/images";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getFormation, getEvents } from "./../../Services";
@@ -75,7 +74,7 @@ const MatchEvents = () => {
           <TimelineContent></TimelineContent>
         </TimelineItem>
         {matches?.map((item, index) => (
-          <TimelineItem>
+          <TimelineItem key={item?.player_id}>
             <TimelineOppositeContent color="text.secondary">
               {item?.player?.first_name} {item?.player?.last_name}
             </TimelineOppositeContent>

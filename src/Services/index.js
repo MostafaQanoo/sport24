@@ -6,4 +6,5 @@ export {
   getFormation,
   getHeadToHead,
   getEvents,
-} from "./api";
+  getStatistics,
+} from "./api/index";
