@@ -38,7 +38,7 @@ const SideInfo = () => {
         sx={{ background: '#F8F8F8', padding: '2px 2px' }}
         direction='column'
       >
-        {competitions.map((compitition) => (
+        {competitions.map((compitition, index) => (
           <li
             key={compitition?.id}
             style={{

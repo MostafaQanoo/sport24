@@ -7,4 +7,5 @@ export {
   getHeadToHead,
   getEvents,
   getStatistics,
+  getCompTable,
 } from "./api/index";
