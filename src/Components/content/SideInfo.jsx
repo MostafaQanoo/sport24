@@ -26,6 +26,8 @@ const SideInfo = () => {
     fetchCompititions();
   }, []);
 
+  console.log(competitions);
+
   useEffect(() => {
     if (matches) setValue('none');
   }, [matches]);
@@ -54,7 +56,7 @@ const SideInfo = () => {
               height='28px'
               style={{ marginLeft: '10px' }}
             />
-            <Link to={`/league/${compitition?.id}`} style={{color: '#000', textDecoration: 'none'}}>
+            <Link to={`/league/${compitition?.id}?season_id=${compitition?.currentSeason?.id}`} style={{color: '#000', textDecoration: 'none'}}>
               <Typography variant='h6' style={{ fontSize: '15px' }}>
                 {compitition?.name}
               </Typography>
