@@ -6,6 +6,7 @@ import { calender, stadium } from "./../assets/icons";
 import { teamA, teamB } from "./../assets/images";
 import { getFormation, getHeadToHead } from "../Services";
 import { useQuery } from "@tanstack/react-query";
+import { RangeTeamsGoals } from "../Components";
 
 const Match = () => {
   const { pathname } = useLocation();
@@ -135,7 +136,7 @@ const Match = () => {
         </main>
       </Box>
       <Box flex="1">
-        <aside>left side</aside>
+        <RangeTeamsGoals />
       </Box>
     </>
   );

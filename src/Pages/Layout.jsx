@@ -9,7 +9,6 @@ import {
   Navbar,
   NavbarMobile,
   TopNav,
-  LeftSide,
 } from "../Components";
 import "./style.css";
 
@@ -26,6 +25,7 @@ const Layout = () => {
           <Container maxWidth="xl" className="container">
             <TopNav />
             <Navbar />
+            {/* <SwiperMatches /> */}
           </Container>
         </>
       )}
