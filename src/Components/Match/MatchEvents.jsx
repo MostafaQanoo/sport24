@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import Timeline from "@mui/lab/Timeline";
 import {
@@ -9,65 +9,100 @@ import {
   TimelineDot,
   TimelineOppositeContent,
 } from "@mui/lab";
-import { football, card, exchange } from "./../../assets/icons";
+import { goal, yellow_card, red_card } from "./../../assets/icons";
+import { teamA, teamB } from "../../assets/images";
+import { useLocation } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getFormation, getEvents } from "./../../Services";
 
 const MatchEvents = () => {
+  const { pathname } = useLocation();
+  const [matchId, setMatchId] = useState(0);
+  const [matches, setMatches] = useState([]);
+
+  useEffect(() => {
+    const matchId = pathname.split("/")[2];
+    setMatchId(matchId);
+  }, [pathname]);
+
+  const { data: formationData } = useQuery(["formation", matchId], () =>
+    getFormation(matchId)
+  );
+
+  const { data: eventData } = useQuery(["headToHead", matchId], () =>
+    getEvents(matchId)
+  );
+
+  useEffect(() => {
+    const array = eventData?.data?.data?.filter(
+      (item) =>
+        item?.type === "goal" ||
+        item?.type === "yellow_card" ||
+        item?.type === "red_card"
+    );
+
+    setMatches(array);
+  }, [eventData]);
+
   return (
     <Box>
-      <Typography variant="h6" sx={{ my: "30px", textAlign: "center" }}>
+      <Typography variant="h6" sx={{ mt: "30px", textAlign: "center" }}>
         بداية المبارة
       </Typography>
+      <Box className="teams">
+        <Box className="team-event">
+          <img
+            src={`https://cdn.so3ody.com/scores/teams/50x50/${formationData?.data?.data?.teamA?.team?.id}.png`}
+            alt="team A"
+          />
+          <p>{formationData?.data?.data?.teamA?.team?.name}</p>
+        </Box>
+        <Box className="team-event">
+          <img
+            src={`https://cdn.so3ody.com/scores/teams/50x50/${formationData?.data?.data?.teamB?.team?.id}.png`}
+            alt="team B"
+          />
+          <p>{formationData?.data?.data?.teamB?.team?.name}</p>
+        </Box>
+      </Box>
       <Timeline>
         <TimelineItem>
-          <TimelineOppositeContent color="text.secondary">
-            كريم بنزيمة ’9
-          </TimelineOppositeContent>
+          <TimelineOppositeContent color="text.secondary"></TimelineOppositeContent>
           <TimelineSeparator>
-            <TimelineDot>
-              <img src={football} alt="football" />
-            </TimelineDot>
+            <TimelineDot className="timeline-dot">0</TimelineDot>
             <TimelineConnector />
           </TimelineSeparator>
-          <TimelineContent>30</TimelineContent>
+          <TimelineContent></TimelineContent>
         </TimelineItem>
+        {matches?.map((item, index) => (
+          <TimelineItem>
+            <TimelineOppositeContent color="text.secondary">
+              {item?.player?.first_name} {item?.player?.last_name}
+            </TimelineOppositeContent>
+            <TimelineSeparator>
+              <TimelineDot>
+                {item?.type === "goal" ? (
+                  <img src={goal} alt="goal" />
+                ) : item?.type === "yellow_card" ? (
+                  <img src={yellow_card} alt="yellow_card" />
+                ) : (
+                  <img src={red_card} alt="red_card" />
+                )}
+              </TimelineDot>
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>{item?.minute}</TimelineContent>
+          </TimelineItem>
+        ))}
         <TimelineItem>
-          <TimelineOppositeContent color="text.secondary">
-            جيرارد بيكيه ’18
-          </TimelineOppositeContent>
+          <TimelineOppositeContent color="text.secondary"></TimelineOppositeContent>
           <TimelineSeparator>
-            <TimelineDot>
-              <img src={card} alt="card" />
-            </TimelineDot>
-            <TimelineConnector />
+            <TimelineDot className="timeline-dot">90</TimelineDot>
           </TimelineSeparator>
-          <TimelineContent>45</TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineOppositeContent color="text.secondary">
-            جيرارد بيكيه ’18
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineDot>
-              <img src={exchange} alt="exchange" />
-            </TimelineDot>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>60</TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineOppositeContent color="text.secondary">
-            جيرارد بيكيه ’18
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineDot>
-              <img src={exchange} alt="exchange" />
-            </TimelineDot>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>90</TimelineContent>
+          <TimelineContent></TimelineContent>
         </TimelineItem>
       </Timeline>
-      <Typography variant="h6" sx={{ my: "30px", textAlign: "center" }}>
+      <Typography variant="h6" sx={{ mb: "30px", textAlign: "center" }}>
         نهاية المبارة
       </Typography>
     </Box>
