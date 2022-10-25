@@ -50,6 +50,7 @@ const MatchOverview = () => {
           </Box>
           <Box className="last-five-matches">
             {headToHeadData?.data?.data[0]?.teamALastFiveResults?.map(
+              // eslint-disable-next-line array-callback-return
               (match, index) => {
                 if (index < 5) {
                   return (
@@ -77,6 +78,7 @@ const MatchOverview = () => {
           </Box>
           <Box className="last-five-matches">
             {headToHeadData?.data?.data[0]?.teamBLastFiveResults?.map(
+              // eslint-disable-next-line array-callback-return
               (match, index) => {
                 if (index < 5) {
                   return (
