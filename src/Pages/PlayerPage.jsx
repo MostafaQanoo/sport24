@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import { MainInfo, TransitionPlayer } from '../Components';
 // Image
-import Player from '../assets/images/player.png';
 import { useParams } from 'react-router-dom';
 import { getSinglePlayer } from '../Services';
 
@@ -29,7 +28,7 @@ const PlayerPage = () => {
       </Box>
       <Box flex='1'>
         <aside>
-          <TransitionPlayer />
+          <TransitionPlayer playerId={id} role={player?.position} />
         </aside>
       </Box>
     </>

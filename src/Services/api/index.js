@@ -9,4 +9,5 @@ export {
   getStatistics,
   getCompTable,
   getSinglePlayer,
+  getPlayerTransfer,
 } from "./user";

@@ -19,7 +19,6 @@ const Leagues = () => {
     fetchMatches();
   }, [seasonId]);
 
-  console.log(matches);
 
   return (
     <>

@@ -21,3 +21,4 @@ export const getStatistics = (team_id, match_id) =>
   );
 export const getCompTable = (params) => axiosRequest("get", `/competitions/table?${params}`);
 export const getSinglePlayer = (params) => axiosRequest("get", `/getSinglePeople?${params}`);
+export const getPlayerTransfer = (params) => axiosRequest("get", `/people/transfers?${params}`);
