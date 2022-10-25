@@ -1,30 +1,62 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Box, Tab, Tabs } from "@mui/material";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { PremierLeague } from "./../assets/images";
 import { calender, stadium } from "./../assets/icons";
 import { teamA, teamB } from "./../assets/images";
+import { getFormation, getHeadToHead } from "../Services";
+import { useQuery } from "@tanstack/react-query";
 
 const Match = () => {
-  const location = useLocation();
-  const [value, setValue] = React.useState(0);
+  const { pathname } = useLocation();
+  const [value, setValue] = useState(0);
+  const [matchId, setMatchId] = useState(0);
+  const [headToHead, setHeadToHead] = useState(null);
+  const [teamsIds, setTeamsIds] = useState({
+    teamA: 0,
+    teamB: 0,
+  });
 
   const handleChange = (event, newValue) => {
-    console.log("newValue: ", newValue);
     setValue(newValue);
   };
 
+  const { data: formationData } = useQuery(["formation", matchId], () =>
+    getFormation(matchId)
+  );
+
   useEffect(() => {
-    if (location.pathname.includes("statistics")) {
+    if (pathname.includes("statistics")) {
       setValue(3);
-    } else if (location.pathname.includes("events")) {
+    } else if (pathname.includes("events")) {
       setValue(2);
-    } else if (location.pathname.includes("formation")) {
+    } else if (pathname.includes("formation")) {
       setValue(1);
     } else {
       setValue(0);
     }
-  }, [location.pathname]);
+
+    const matchId = pathname.split("/")[2];
+    setMatchId(matchId);
+  }, [pathname]);
+
+  useEffect(() => {
+    setTeamsIds({
+      teamA: formationData?.data?.data?.teamA?.team?.id,
+      teamB: formationData?.data?.data?.teamB?.team?.id,
+    });
+  }, [formationData]);
+
+  const { data: headToHeadData } = useQuery(["headToHead", teamsIds], () =>
+    getHeadToHead(teamsIds)
+  );
+
+  useEffect(() => {
+    console.log("headToHeadData: ", headToHeadData?.data?.data);
+    setHeadToHead(
+      headToHeadData?.data?.data[headToHeadData?.data?.data.length - 1]
+    );
+  }, [headToHeadData]);
 
   return (
     <>
@@ -32,37 +64,51 @@ const Match = () => {
         <main>
           <div className="header-img">
             <Box className="header-card">
-              <h1>
-                الدوري <br /> الممتاز
-              </h1>
-              <img src={PremierLeague} alt="الدوري الممتاز" />
+              <h1>{headToHead?.competition?.name}</h1>
+              <img
+                src={`https://cdn.so3ody.com/scores/competitions/100x130/${headToHead?.competition?.id}.png`}
+                alt="img"
+              />
             </Box>
             <Box className="body-card">
               <Box className="card-box">
                 <img src={stadium} alt="stadium" />
-                <p>مانشستر يونايتد</p>
+                <p>كامب نو</p>
               </Box>
               <Box className="blur-card">
                 <Box className="team">
-                  <img src={teamA} alt="team A" />
-                  <p>ريال مدريد</p>
+                  <img
+                    src={`https://cdn.so3ody.com/scores/teams/50x50/${formationData?.data?.data?.teamA?.team?.id}.png`}
+                    alt="team A"
+                  />
+                  <p>{formationData?.data?.data?.teamA?.team?.name}</p>
                 </Box>
                 <Box className="score">
                   <Box className="box-icon-label">
-                    <img src={PremierLeague} alt="الدوري الممتاز" />
-                    <span>الدوري الممتاز</span>
+                    <img
+                      src={`https://cdn.so3ody.com/scores/competitions/100x130/${headToHead?.competition?.id}.png`}
+                      alt="img"
+                    />
+                    <span>{headToHead?.competition?.name}</span>
                   </Box>
-                  <Box className="result">2 : 1</Box>
-                  <p className="time">وقت كامل</p>
+                  <Box className="result">
+                    {headToHead?.scoreA} : {headToHead?.scoreB}
+                  </Box>
+                  <p className="time">
+                    {headToHead?.match_width === "90" ? "وقت كامل" : ""}
+                  </p>
                 </Box>
                 <Box className="team">
-                  <img src={teamB} alt="team B" />
-                  <p>برشلونة</p>
+                  <img
+                    src={`https://cdn.so3ody.com/scores/teams/50x50/${formationData?.data?.data?.teamB?.team?.id}.png`}
+                    alt="team B"
+                  />
+                  <p>{formationData?.data?.data?.teamB?.team?.name}</p>
                 </Box>
               </Box>
               <Box className="card-box">
                 <img src={calender} alt="calender" />
-                <p>السبت 03 سبتمبر 6:00 م</p>
+                <p>{headToHead?.timing}</p>
               </Box>
             </Box>
           </div>

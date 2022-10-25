@@ -1,11 +1,10 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://scoresapi.so3ody.com/api/v1/",
+  baseURL: "https://scoresapi.so3ody.com/api/v1",
 });
 
 const axiosRequest = async (method, url, data = null, params = null) => {
-  console.log("url: ", url);
   const config = {
     method,
     url,
