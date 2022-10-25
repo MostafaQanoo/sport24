@@ -14,8 +14,10 @@ export const getHeadToHead = ({ teamA, teamB }) =>
   );
 export const getEvents = (match_id) =>
   axiosRequest("get", `/matches/events?match_id=${match_id}`);
-export const getStatistics = (team_id, match_id) =>
-  axiosRequest(
-    "get",
-    `/matches/team/statistics?match_id=${match_id}&team_id=${team_id}`
-  );
+export const getStatistics = (match_id) =>
+  axiosRequest("get", `/matches/all/team/statistics?match_id=${match_id}`);
+// export const getStatistics = (team_id, match_id) =>
+//   axiosRequest(
+//     "get",
+//     `/matches/team/statistics?match_id=${match_id}&team_id=${team_id}`
+//   );

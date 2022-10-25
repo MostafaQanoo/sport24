@@ -703,6 +703,28 @@ table .css-1ex1afd-MuiTableCell-root {
   border-radius: 100vmax;
 }
 
+.sidebar-tabs.MuiTabs-root {
+  height: 30px !important;
+  background-color: #eeeeee;
+  margin: 0 10px;
+  margin-bottom: 10px;
+  border-radius: 100vmax;
+}
+
+.sidebar-tabs .MuiButtonBase-root {
+  flex-grow: 1 !important;
+}
+
+.sidebar-tabs .MuiTabs-indicator {
+  display: none;
+}
+
+.sidebar-tabs .Mui-selected {
+  color: var(--clr-white) !important;
+  background-color: var(--clr-blue) !important;
+  border-radius: 100vmax;
+}
+
 .match-formation-content {
   margin: 30px 0;
 }

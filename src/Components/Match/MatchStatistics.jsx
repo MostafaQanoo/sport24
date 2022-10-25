@@ -29,22 +29,16 @@ const MatchStatistics = () => {
     getHeadToHead(teamsIds)
   );
 
-  const { data: statisticsTeamAData } = useQuery(
-    ["statisticsA", teamsIds.teamA, matchId],
-    () => getStatistics(teamsIds?.teamA, matchId)
-  );
-
-  const { data: statisticsTeamBData } = useQuery(
-    ["statisticsB", teamsIds.teamB, matchId],
-    () => getStatistics(teamsIds?.teamB, matchId)
+  const { data: statisticsTeamsData } = useQuery(["statistics", matchId], () =>
+    getStatistics(matchId)
   );
 
   useEffect(() => {
     setTeamsStatistics({
-      teamA: statisticsTeamAData?.data?.data,
-      teamB: statisticsTeamBData?.data?.data,
+      teamA: statisticsTeamsData?.data?.data?.teamA,
+      teamB: statisticsTeamsData?.data?.data?.teamB,
     });
-  }, [statisticsTeamAData, statisticsTeamBData]);
+  }, [statisticsTeamsData]);
 
   useEffect(() => {
     setTeamsIds({
@@ -52,8 +46,6 @@ const MatchStatistics = () => {
       teamB: formationData?.data?.data?.teamB?.team?.id,
     });
   }, [formationData]);
-
-  useEffect(() => {}, [headToHeadData]);
 
   const match = [
     {

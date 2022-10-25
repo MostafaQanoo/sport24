@@ -33,7 +33,9 @@ const MatchOverview = () => {
     });
   }, [formationData]);
 
-  useEffect(() => {}, [headToHeadData]);
+  useEffect(() => {
+    console.log("headToHeadData", headToHeadData?.data?.data);
+  }, [headToHeadData]);
 
   return (
     <Box>
@@ -97,60 +99,46 @@ const MatchOverview = () => {
       <Divider />
       <p className="title">مواجهات مباشرة</p>
       <Box className="direct-confrontations-cards">
-        <Box className="direct-confrontations-card">
-          <Box>2022/08/30</Box>
-          <Box className="blur-card">
-            <Box className="team">
-              <img
-                src={`https://cdn.so3ody.com/scores/teams/50x50/${formationData?.data?.data?.teamA?.team?.id}.png`}
-                alt="team A"
-              />
-              <p>{formationData?.data?.data?.teamA?.team?.name}</p>
-            </Box>
-            <Box className="score">
-              <Box className="result">1 : 2</Box>
-              <p className="time">21:00</p>
-            </Box>
-            <Box className="team">
-              <img
-                src={`https://cdn.so3ody.com/scores/teams/50x50/${formationData?.data?.data?.teamB?.team?.id}.png`}
-                alt="team B"
-              />
-              <p>{formationData?.data?.data?.teamB?.team?.name}</p>
-            </Box>
-          </Box>
-          <Box className="link">
-            <Link to={`/match/${1253193900}`}>صفحة المباراة</Link>
-            <img src={leftArrow} alt="left arrow" />
-          </Box>
-        </Box>
-        <Box className="direct-confrontations-card">
-          <Box>2022/08/30</Box>
-          <Box className="blur-card">
-            <Box className="team">
-              <img
-                src={`https://cdn.so3ody.com/scores/teams/50x50/${formationData?.data?.data?.teamA?.team?.id}.png`}
-                alt="team A"
-              />
-              <p>{formationData?.data?.data?.teamA?.team?.name}</p>
-            </Box>
-            <Box className="score">
-              <Box className="result">1 : 2</Box>
-              <p className="time">21:00</p>
-            </Box>
-            <Box className="team">
-              <img
-                src={`https://cdn.so3ody.com/scores/teams/50x50/${formationData?.data?.data?.teamB?.team?.id}.png`}
-                alt="team B"
-              />
-              <p>{formationData?.data?.data?.teamB?.team?.name}</p>
-            </Box>
-          </Box>
-          <Box className="link">
-            <Link to={`/match/${1253193900}`}>صفحة المباراة</Link>
-            <img src={leftArrow} alt="left arrow" />
-          </Box>
-        </Box>
+        {headToHeadData?.data?.data?.map((item, index) => {
+          console.log("item", item);
+          if (index < 5) {
+            return (
+              <Box key={item?.id} className="direct-confrontations-card">
+                <Box>{item?.timing}</Box>
+                <Box className="blur-card">
+                  <Box className="team">
+                    <img
+                      src={`https://cdn.so3ody.com/scores/teams/50x50/${item?.teamA_id}.png`}
+                      alt="team A"
+                    />
+                    <p>{item?.teamA?.name}</p>
+                  </Box>
+                  <Box className="score">
+                    <Box className="result">
+                      {item?.scoreA} : {item?.scoreB}
+                    </Box>
+                    <p className="time">
+                      {item?.match_width === "90"
+                        ? "وفت كامل"
+                        : item?.match_width}
+                    </p>
+                  </Box>
+                  <Box className="team">
+                    <img
+                      src={`https://cdn.so3ody.com/scores/teams/50x50/${item?.teamB_id}.png`}
+                      alt="team B"
+                    />
+                    <p>{item?.teamB?.name}</p>
+                  </Box>
+                </Box>
+                <Box className="link">
+                  <Link to={`/match/${item?.id}`}>صفحة المباراة</Link>
+                  <img src={leftArrow} alt="left arrow" />
+                </Box>
+              </Box>
+            );
+          }
+        })}
       </Box>
     </Box>
   );
