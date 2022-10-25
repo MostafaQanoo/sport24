@@ -3,17 +3,28 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import { Box } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { player } from "../../assets/images";
+import { useQuery } from "@tanstack/react-query";
+import { getOrderCompetitions } from "./../../Services/api/user";
+import { Link } from "react-router-dom";
 
 const RangeTeamsGoals = () => {
-  const [value, setValue] = useState("2");
+  const [value, setValue] = useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   let array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+  const { data: competitionsData } = useQuery(["OrderCompetitions"], () =>
+    getOrderCompetitions()
+  );
+
+  useEffect(() => {
+    console.log("competitionsData", competitionsData?.data?.data?.table);
+  }, [competitionsData]);
 
   return (
     <Box>
@@ -118,7 +129,7 @@ const RangeTeamsGoals = () => {
                   </th>
                 </tr>
 
-                {array.map((e) => (
+                {competitionsData?.data?.data?.table.map((item, index) => (
                   <tr
                     key={Math.random()}
                     style={{
@@ -129,19 +140,29 @@ const RangeTeamsGoals = () => {
                       display: "flex",
                       justifyContent: "space-between",
                     }}>
-                    <td style={{ textAlign: "start", width: "10%" }}>1</td>
+                    <td style={{ textAlign: "start", width: "10%" }}>
+                      {item?.position}
+                    </td>
                     <td
                       style={{
                         textAlign: "start",
                         width: "45%",
                         whiteSpace: "nowrap",
                       }}>
-                      ريال مدريد{" "}
+                      <Link className="text-link" to={`/team/${item?.id}`}>
+                        {item?.name}
+                      </Link>
                     </td>
-                    <td style={{ width: "15%", textAlign: "center" }}>5</td>
-                    <td style={{ width: "15%", textAlign: "center" }}>10</td>
-                    <td style={{ width: "15%", textAlign: "center" }}>10</td>
-                    <td style={{ width: "15%" }}>55</td>
+                    <td style={{ width: "15%", textAlign: "center" }}>
+                      {item?.totalMatches}
+                    </td>
+                    <td style={{ width: "15%", textAlign: "center" }}>
+                      {item?.score}
+                    </td>
+                    <td style={{ width: "15%", textAlign: "center" }}>
+                      {item?.receive}
+                    </td>
+                    <td style={{ width: "15%" }}>{item?.points}</td>
                   </tr>
                 ))}
               </tbody>

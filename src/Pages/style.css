@@ -919,3 +919,8 @@ table .css-1ex1afd-MuiTableCell-root {
 .direct-confrontations-cards {
   margin-bottom: 50px;
 }
+
+.text-link {
+  color: var(--clr-black);
+  text-decoration: none;
+}

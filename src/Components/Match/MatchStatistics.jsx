@@ -98,13 +98,13 @@ const MatchStatistics = () => {
     },
     {
       id: 10,
-      key: "shotOnTarget",
+      key: "possession",
       nameEn: "possession",
       nameAr: "الإستحواذ",
     },
     {
       id: 11,
-      key: "possession",
+      key: "shotOnTarget",
       nameEn: "Shots on goal",
       nameAr: "تسديدات علي المرمى",
     },

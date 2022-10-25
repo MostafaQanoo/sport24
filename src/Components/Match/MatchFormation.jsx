@@ -3,7 +3,7 @@ import { Box, Tab, Tabs, Typography } from "@mui/material";
 import { stadium } from "../../assets/images";
 import { getFormation } from "../../Services";
 import { useQuery } from "@tanstack/react-query";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const MatchFormation = () => {
   const [value, setValue] = useState(0);
@@ -100,72 +100,81 @@ const MatchFormation = () => {
             players?.midfielder.length > 0 &&
             players?.forwarder.length > 0 && (
               <>
-                <Box className="match-formation-player GK">
-                  <img
-                    src={`https://cdn.so3ody.com/scores/people/50x50/${players?.gk[0]?.player_id}.png`}
-                    alt="player"
-                  />
-                  <p>
-                    {players?.gk[0]?.player?.first_name +
-                      " " +
-                      players?.gk[0]?.player?.last_name}
-                  </p>
-                </Box>
+                <Link to={`/player/${players?.gk[0]?.player_id}`}>
+                  <Box className="match-formation-player GK">
+                    <img
+                      src={`https://cdn.so3ody.com/scores/people/50x50/${players?.gk[0]?.player_id}.png`}
+                      alt="player"
+                    />
+                    <p>
+                      {players?.gk[0]?.player?.first_name +
+                        " " +
+                        players?.gk[0]?.player?.last_name}
+                    </p>
+                  </Box>
+                </Link>
+
                 {players?.defender?.map((item, index, array) => {
                   return (
-                    <Box
-                      key={item?.player_id}
-                      className={`match-formation-player defender ${
-                        playerPositionClass?.[array.length]?.[index]
-                      }`}>
-                      <img
-                        src={`https://cdn.so3ody.com/scores/people/50x50/${item?.player_id}.png`}
-                        alt="player"
-                      />
-                      <p>
-                        {item?.player?.first_name +
-                          " " +
-                          item?.player?.last_name}
-                      </p>
-                    </Box>
+                    <Link to={`/player/${item?.player_id}`}>
+                      <Box
+                        key={item?.player_id}
+                        className={`match-formation-player defender ${
+                          playerPositionClass?.[array.length]?.[index]
+                        }`}>
+                        <img
+                          src={`https://cdn.so3ody.com/scores/people/50x50/${item?.player_id}.png`}
+                          alt="player"
+                        />
+                        <p>
+                          {item?.player?.first_name +
+                            " " +
+                            item?.player?.last_name}
+                        </p>
+                      </Box>
+                    </Link>
                   );
                 })}
                 {players?.midfielder?.map((item, index, array) => {
                   return (
-                    <Box
-                      key={item?.player_id}
-                      className={`match-formation-player midfielder ${
-                        playerPositionClass?.[array.length]?.[index]
-                      }`}>
-                      <img
-                        src={`https://cdn.so3ody.com/scores/people/50x50/${item?.player_id}.png`}
-                        alt="player"
-                      />
-                      <p>
-                        {item?.player?.first_name +
-                          " " +
-                          item?.player?.last_name}
-                      </p>
-                    </Box>
+                    <Link to={`/player/${item?.player_id}`}>
+                      <Box
+                        key={item?.player_id}
+                        className={`match-formation-player midfielder ${
+                          playerPositionClass?.[array.length]?.[index]
+                        }`}>
+                        <img
+                          src={`https://cdn.so3ody.com/scores/people/50x50/${item?.player_id}.png`}
+                          alt="player"
+                        />
+                        <p>
+                          {item?.player?.first_name +
+                            " " +
+                            item?.player?.last_name}
+                        </p>
+                      </Box>
+                    </Link>
                   );
                 })}
                 {players?.forwarder?.map((item, index, array) => {
                   return (
-                    <Box
-                      key={item?.player_id}
-                      className={`match-formation-player forwarder ${
-                        playerPositionClass?.[array.length]?.[index]
-                      }`}>
-                      <img
-                        src={`https://cdn.so3ody.com/scores/people/50x50/${item?.player_id}.png`}
-                        alt="player"
-                      />
-                      <p>
-                        {item?.player?.first_name +
-                          " " +
-                          item?.player?.last_name}
-                      </p>
-                    </Box>
+                    <Link to={`/player/${item?.player_id}`}>
+                      <Box
+                        key={item?.player_id}
+                        className={`match-formation-player forwarder ${
+                          playerPositionClass?.[array.length]?.[index]
+                        }`}>
+                        <img
+                          src={`https://cdn.so3ody.com/scores/people/50x50/${item?.player_id}.png`}
+                          alt="player"
+                        />
+                        <p>
+                          {item?.player?.first_name +
+                            " " +
+                            item?.player?.last_name}
+                        </p>
+                      </Box>
+                    </Link>
                   );
                 })}
               </>
@@ -183,29 +192,31 @@ const MatchFormation = () => {
           {formationData?.data?.data?.[team]?.sub_on_beanch?.map(
             (item, index) => {
               return (
-                <Box key={index} className="match-bench-player">
-                  <Box className="match-bench-player-img">
-                    <img
-                      src={`https://cdn.so3ody.com/scores/people/50x50/${item?.player_id}.png`}
-                      alt="player"
-                    />
-                  </Box>
-                  <Box className="match-bench-player-content">
-                    <Box className="match-bench-player-info">
-                      <Box className="match-bench-player-name">
-                        {item?.player?.first_name +
-                          " " +
-                          item?.player?.last_name}
+                <Link to={`/player/${item?.player_id}`} className="text-link">
+                  <Box key={index} className="match-bench-player">
+                    <Box className="match-bench-player-img">
+                      <img
+                        src={`https://cdn.so3ody.com/scores/people/50x50/${item?.player_id}.png`}
+                        alt="player"
+                      />
+                    </Box>
+                    <Box className="match-bench-player-content">
+                      <Box className="match-bench-player-info">
+                        <Box className="match-bench-player-name">
+                          {item?.player?.first_name +
+                            " " +
+                            item?.player?.last_name}
+                        </Box>
+                        <Box className="match-bench-player-number">
+                          {item?.tshirt_number}
+                        </Box>
                       </Box>
-                      <Box className="match-bench-player-number">
-                        {item?.tshirt_number}
+                      <Box className="match-bench-player-position">
+                        {playerPosition[item?.main_position]}
                       </Box>
                     </Box>
-                    <Box className="match-bench-player-position">
-                      {playerPosition[item?.main_position]}
-                    </Box>
                   </Box>
-                </Box>
+                </Link>
               );
             }
           )}
