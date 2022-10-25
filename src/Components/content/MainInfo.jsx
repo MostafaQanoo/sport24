@@ -6,14 +6,15 @@ import ArrowUpwardOutlinedIcon from "@mui/icons-material/ArrowUpwardOutlined";
 import PersonPinCircleOutlinedIcon from "@mui/icons-material/PersonPinCircleOutlined";
 
 import TableData from "../content/TableDate";
+import calculateAge from "../../Utils/calculateAge";
 
-const MainInfo = ({ Player }) => {
+const MainInfo = ({ player }) => {
   return (
     <Box flex="3">
       <Box className="player">
         <Stack color="#fff">
-          <img src="https://via.placeholder.com/70" alt="" />
-          <h5>كريستيانو رونالدو</h5>
+          <img src={`https://cdn.so3ody.com/scores/people/50x50/${player?.id}.png`} alt={player?.name} />
+          <h5>{player?.name}</h5>
           <Stack
             width="96%"
             paddingTop="60px"
@@ -26,7 +27,7 @@ const MainInfo = ({ Player }) => {
                 fontSize="20px"
                 style={{ margin: "-10px 0 0 6px", color: "#d2d2d2" }}
               />
-              <Typography variant="p">مانشستر يونايتد</Typography>
+              <Typography variant="p">{player?.nationality}</Typography>
             </Box>
 
             <Box width="20%" display="flex" alignItems="center">
@@ -34,7 +35,7 @@ const MainInfo = ({ Player }) => {
                 fontSize="20px"
                 style={{ margin: "-10px 0 0 6px", color: "#d2d2d2" }}
               />
-              <Typography variant="p">البرتغال</Typography>
+              <Typography variant="p">{player?.name && player?.memberships[0]?.teamName}</Typography>
             </Box>
 
             <Box width="20%" display="flex" alignItems="center">
@@ -42,7 +43,7 @@ const MainInfo = ({ Player }) => {
                 fontSize="20px"
                 style={{ margin: "-10px 0 0 6px", color: "#d2d2d2" }}
               />
-              <Typography variant="p"> العمر:37 سنة </Typography>
+              <Typography variant="p"> العمر:{calculateAge(player?.birthDate)} سنة </Typography>
             </Box>
 
             <Box width="20%" display="flex" alignItems="center">
@@ -50,7 +51,7 @@ const MainInfo = ({ Player }) => {
                 fontSize="20px"
                 style={{ margin: "-10px 0 0 6px", color: "#d2d2d2" }}
               />
-              <Typography variant="p">المركز: مهاجم</Typography>
+              <Typography variant="p">المركز: {player?.position}</Typography>
             </Box>
           </Stack>
         </Stack>

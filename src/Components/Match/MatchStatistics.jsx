@@ -21,17 +21,18 @@ const MatchStatistics = () => {
     setMatchId(matchId);
   }, [pathname]);
 
-  const { data: formationData } = useQuery(["formation", matchId], () =>
-    getFormation(matchId)
+  const { data: formationData, isLoading } = useQuery(
+    ["formation", matchId],
+    () => getFormation(matchId)
   );
 
-  const { data: headToHeadData } = useQuery(["headToHead", teamsIds], () =>
-    getHeadToHead(teamsIds)
+  const { data: headToHeadData, isLoading: isLoadingHeadToHead } = useQuery(
+    ["headToHead", teamsIds],
+    () => getHeadToHead(teamsIds)
   );
 
-  const { data: statisticsTeamsData } = useQuery(["statistics", matchId], () =>
-    getStatistics(matchId)
-  );
+  const { data: statisticsTeamsData, isLoading: isLoadingStatistics } =
+    useQuery(["statistics", matchId], () => getStatistics(matchId));
 
   useEffect(() => {
     setTeamsStatistics({
@@ -46,6 +47,9 @@ const MatchStatistics = () => {
       teamB: formationData?.data?.data?.teamB?.team?.id,
     });
   }, [formationData]);
+
+  if (isLoading || isLoadingHeadToHead || isLoadingStatistics)
+    return <div>تحميل...</div>;
 
   const match = [
     {

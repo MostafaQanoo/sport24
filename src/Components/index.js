@@ -15,7 +15,8 @@ export { default as LeftSide } from "./LeftSide";
 export { default as PageBanner } from "./PageBanner";
 export {
   ArrangeTable,
-  TeamStatistics
+  TeamStatistics,
+  MatchesTable
 } from './Leagues';
 export {
   TeamsSlider,

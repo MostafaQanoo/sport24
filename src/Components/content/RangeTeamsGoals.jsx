@@ -42,7 +42,7 @@ const RangeTeamsGoals = () => {
           }}>
           الترتيب
         </span>
-        <span>الدورى السعودى للمحترفين 2021/2022</span>
+        <span>الدورى الإسباني 2022/2023</span>
       </Box>
       <Box
         sx={{

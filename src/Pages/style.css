@@ -924,3 +924,8 @@ table .css-1ex1afd-MuiTableCell-root {
   color: var(--clr-black);
   text-decoration: none;
 }
+
+/* Matches Table */
+.matches-table-sec {
+  margin-bottom: 3rem;
+}

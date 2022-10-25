@@ -18,12 +18,14 @@ const MatchOverview = () => {
     setMatchId(matchId);
   }, [pathname]);
 
-  const { data: formationData } = useQuery(["formation", matchId], () =>
-    getFormation(matchId)
+  const { data: formationData, isLoading } = useQuery(
+    ["formation", matchId],
+    () => getFormation(matchId)
   );
 
-  const { data: headToHeadData } = useQuery(["headToHead", teamsIds], () =>
-    getHeadToHead(teamsIds)
+  const { data: headToHeadData, isLoading: isLoadingHeadToHead } = useQuery(
+    ["headToHead", teamsIds],
+    () => getHeadToHead(teamsIds)
   );
 
   useEffect(() => {
@@ -36,6 +38,8 @@ const MatchOverview = () => {
   useEffect(() => {
     console.log("headToHeadData", headToHeadData?.data?.data);
   }, [headToHeadData]);
+
+  if (isLoading || isLoadingHeadToHead) return <div>تحميل...</div>;
 
   return (
     <Box>

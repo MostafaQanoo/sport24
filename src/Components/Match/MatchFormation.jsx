@@ -31,8 +31,9 @@ const MatchFormation = () => {
     setMatchId(matchId);
   }, [pathname]);
 
-  const { data: formationData } = useQuery(["formation", matchId], () =>
-    getFormation(matchId)
+  const { data: formationData, isLoading } = useQuery(
+    ["formation", matchId],
+    () => getFormation(matchId)
   );
 
   useEffect(() => {
@@ -80,6 +81,8 @@ const MatchFormation = () => {
     4: ["p20", "p40", "p60", "p80"],
     5: ["p10", "p30", "p50", "p70", "p90"],
   };
+
+  if (isLoading) return <div>تحميل...</div>;
 
   return (
     <Box className="match-formation">
