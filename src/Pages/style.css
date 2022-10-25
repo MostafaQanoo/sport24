@@ -633,3 +633,39 @@ table .css-1ex1afd-MuiTableCell-root {
     height: 30px;
   }
 }
+
+
+/* Single Match Style */
+.single-match{
+  display: block;
+  max-width: 550px;
+  margin: 0 auto 2rem;
+  background-color: #FFF7F8;
+  border-radius: 10px;
+  border: 2px solid #EDD9D9;
+  padding: 1rem 5rem;
+}
+.single-match a{
+  text-decoration: none;
+  color: #000;
+}
+.single-match .compitition{
+  justify-content: center;
+}
+.single-match .teams{
+  justify-content: space-between;
+}
+.single-match .teams-score{
+  font-weight: bold;
+  text-align: center;
+  font-size: 1rem;
+}
+.MuiPaper-root span{
+  font-weight: bold;
+  color: #000;
+}
+.single-match .teams-score .note{
+  font-size: .9rem;
+  font-weight: normal;
+  margin-top: 1rem;
+}

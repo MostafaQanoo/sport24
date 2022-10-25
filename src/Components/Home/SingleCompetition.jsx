@@ -3,6 +3,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React, { useEffect, useState } from 'react';
 import { getMatches } from '../../Services';
 import { Link } from 'react-router-dom';
+import SingleMatch from './SingleMatch';
 
 const SingleCompetition = ({ compitition, date }) => {
   const currentSeason = compitition?.currentSeason?.id;
@@ -26,9 +27,7 @@ const SingleCompetition = ({ compitition, date }) => {
     }
     return matches?.map((match) => (
       <div>
-        <Link to={`/match/${match?.id}`} key={match?.id}>
-          {match?.teamA?.name} & {match?.teamB?.name}
-        </Link>
+        <SingleMatch match={match} compitition={compitition} key={match?.id} />
       </div>
     ))
   }
@@ -38,7 +37,7 @@ const SingleCompetition = ({ compitition, date }) => {
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <div className='compitition'>
           <img
-            src={`https://cdn.so3ody.com/scores/teams/50x50/${compitition?.id}.png`}
+            src={`https://cdn.so3ody.com/scores/competitions/100x130/${compitition?.id}.png`}
             alt={compitition?.name}
             className='comp-image'
           />

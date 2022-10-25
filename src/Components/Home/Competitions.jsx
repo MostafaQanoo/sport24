@@ -8,8 +8,10 @@ const Competitions = () => {
   const [competitions, setCompetitions] = useState([]);
 
   const fetchCompititions = async () => {
-    const response = await getCompetitions();
-    setCompetitions(response.data.data);
+    const response = await getCompetitions('');
+    // const europComp = await getCompetitions('?id=401');
+    // const champComp = await getCompetitions('?id=400');
+    setCompetitions([...response.data.data.slice(0, 5)]);
   };
 
   useEffect(() => {
@@ -40,7 +42,7 @@ const Competitions = () => {
       </div>
 
       <div className='compititons'>
-        {competitions.slice(0, 5)?.map((compitition) => (
+        {competitions?.map((compitition) => (
           <SingleCompitition compitition={compitition} date={date[1]} />
         ))}
       </div>
