@@ -37,6 +37,7 @@ const MatchFormation = () => {
 
   useEffect(() => {
     setPlayers({ defender: [], midfielder: [], forwarder: [], gk: [] });
+    // eslint-disable-next-line array-callback-return
     formationData?.data?.data?.[team]?.line_up?.map((player) => {
       if (player?.main_position === "GK") {
         setPlayers((prev) => ({
