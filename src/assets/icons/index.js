@@ -8,3 +8,4 @@ export { default as yellow_card } from "./yellow-card.svg";
 export { default as red_card } from "./red-card.svg";
 export { default as yellow_red_card } from "./yellow-red-card.svg";
 export { default as exchange } from "./exchange.svg";
+export { default as leftArrow } from "./left-arrow.svg";

@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
 import router from "./Router";
-import { getToken } from "./Services";
+import { getToken } from "./Services/index";
 import { useQuery } from "@tanstack/react-query";
 
 function App() {

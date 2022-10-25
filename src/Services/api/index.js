@@ -6,4 +6,5 @@ export {
   getFormation,
   getHeadToHead,
   getEvents,
+  getStatistics,
 } from "./user";

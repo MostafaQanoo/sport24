@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { Box, Divider } from "@mui/material";
-import { teamA, teamB } from "../../assets/images";
-import { win, lose, draw } from "../../assets/icons";
-import { useLocation } from "react-router-dom";
+import { win, lose, draw, leftArrow } from "../../assets/icons";
+import { Link, useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getFormation, getHeadToHead } from "./../../Services";
-import { Competitions, TeamsSlider } from "../Home";
 
 const MatchOverview = () => {
   const { pathname } = useLocation();
@@ -98,6 +96,62 @@ const MatchOverview = () => {
       </Box>
       <Divider />
       <p className="title">مواجهات مباشرة</p>
+      <Box className="direct-confrontations-cards">
+        <Box className="direct-confrontations-card">
+          <Box>2022/08/30</Box>
+          <Box className="blur-card">
+            <Box className="team">
+              <img
+                src={`https://cdn.so3ody.com/scores/teams/50x50/${formationData?.data?.data?.teamA?.team?.id}.png`}
+                alt="team A"
+              />
+              <p>{formationData?.data?.data?.teamA?.team?.name}</p>
+            </Box>
+            <Box className="score">
+              <Box className="result">1 : 2</Box>
+              <p className="time">21:00</p>
+            </Box>
+            <Box className="team">
+              <img
+                src={`https://cdn.so3ody.com/scores/teams/50x50/${formationData?.data?.data?.teamB?.team?.id}.png`}
+                alt="team B"
+              />
+              <p>{formationData?.data?.data?.teamB?.team?.name}</p>
+            </Box>
+          </Box>
+          <Box className="link">
+            <Link to={`/match/${1253193900}`}>صفحة المباراة</Link>
+            <img src={leftArrow} alt="left arrow" />
+          </Box>
+        </Box>
+        <Box className="direct-confrontations-card">
+          <Box>2022/08/30</Box>
+          <Box className="blur-card">
+            <Box className="team">
+              <img
+                src={`https://cdn.so3ody.com/scores/teams/50x50/${formationData?.data?.data?.teamA?.team?.id}.png`}
+                alt="team A"
+              />
+              <p>{formationData?.data?.data?.teamA?.team?.name}</p>
+            </Box>
+            <Box className="score">
+              <Box className="result">1 : 2</Box>
+              <p className="time">21:00</p>
+            </Box>
+            <Box className="team">
+              <img
+                src={`https://cdn.so3ody.com/scores/teams/50x50/${formationData?.data?.data?.teamB?.team?.id}.png`}
+                alt="team B"
+              />
+              <p>{formationData?.data?.data?.teamB?.team?.name}</p>
+            </Box>
+          </Box>
+          <Box className="link">
+            <Link to={`/match/${1253193900}`}>صفحة المباراة</Link>
+            <img src={leftArrow} alt="left arrow" />
+          </Box>
+        </Box>
+      </Box>
     </Box>
   );
 };

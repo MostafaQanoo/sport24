@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
-import { player, stadium } from "../../assets/images";
+import { stadium } from "../../assets/images";
 import { getFormation } from "../../Services";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
@@ -65,6 +65,21 @@ const MatchFormation = () => {
     });
   }, [formationData, team]);
 
+  const playerPosition = {
+    defender: "مدافع",
+    midfielder: "وسط",
+    forwarder: "هجوم",
+    GK: "حارس مرمى",
+  };
+
+  const playerPositionClass = {
+    1: ["p50"],
+    2: ["p30", "p60"],
+    3: ["p25", "p50", "p75"],
+    4: ["p20", "p40", "p60", "p80"],
+    5: ["p10", "p30", "p50", "p70", "p90"],
+  };
+
   return (
     <Box className="match-formation">
       <Tabs
@@ -79,25 +94,6 @@ const MatchFormation = () => {
 
       <Box className="match-formation-content">
         <Box className="match-formation-content-stadium">
-          {/* {formationData?.data?.data?.[team]?.line_up?.map((item, index) => {
-            return (
-              <Box
-                key={item.id}
-                className={`match-formation-player ${item?.main_position}`}>
-                <img
-                  src={`https://cdn.so3ody.com/scores/people/50x50/${item.player_id}.png`}
-                  alt="player"
-                />
-                <p>
-                  {item?.player?.first_name +
-                    " " +
-                    item?.player?.last_name +
-                    " " +
-                    item?.tshirt_number}
-                </p>
-              </Box>
-            );
-          })}*/}
           {players?.gk.length > 0 &&
             players?.defender.length > 0 &&
             players?.midfielder.length > 0 &&
@@ -114,117 +110,63 @@ const MatchFormation = () => {
                       players?.gk[0]?.player?.last_name}
                   </p>
                 </Box>
-                <Box className="match-formation-player defender left">
-                  <img
-                    src={`https://cdn.so3ody.com/scores/people/50x50/${players?.defender[0]?.player_id}.png`}
-                    alt="player"
-                  />
-                  <p>
-                    {players?.defender[0]?.player?.first_name +
-                      " " +
-                      players?.defender[0]?.player?.last_name}
-                  </p>
-                </Box>
-                <Box className="match-formation-player defender middle">
-                  <img
-                    src={`https://cdn.so3ody.com/scores/people/50x50/${players?.defender[1]?.player_id}.png`}
-                    alt="player"
-                  />
-                  <p>
-                    {players?.defender[1].player?.first_name +
-                      " " +
-                      players?.defender[1].player?.last_name}
-                  </p>
-                </Box>
-                <Box className="match-formation-player defender middle-2">
-                  <img
-                    src={`https://cdn.so3ody.com/scores/people/50x50/${players?.defender[2]?.player_id}.png`}
-                    alt="player"
-                  />
-                  <p>
-                    {players?.defender[2]?.player?.first_name +
-                      " " +
-                      players?.defender[2]?.player?.last_name}
-                  </p>
-                </Box>
-                <Box className="match-formation-player defender right">
-                  <img
-                    src={`https://cdn.so3ody.com/scores/people/50x50/${players?.defender[3]?.player_id}.png`}
-                    alt="player"
-                  />
-                  <p>
-                    {players?.defender[3]?.player?.first_name +
-                      " " +
-                      players?.defender[3]?.player?.last_name}
-                  </p>
-                </Box>
-
-                <Box className="match-formation-player midfielder left">
-                  <img
-                    src={`https://cdn.so3ody.com/scores/people/50x50/${players?.midfielder[0]?.player_id}.png`}
-                    alt="player"
-                  />
-                  <p>
-                    {players?.midfielder[0]?.player?.first_name +
-                      " " +
-                      players?.midfielder[0]?.player?.last_name}
-                  </p>
-                </Box>
-                <Box className="match-formation-player midfielder middle">
-                  <img
-                    src={`https://cdn.so3ody.com/scores/people/50x50/${players?.midfielder[1]?.player_id}.png`}
-                    alt="player"
-                  />
-                  <p>
-                    {players?.midfielder[1]?.player?.first_name +
-                      " " +
-                      players?.midfielder[1]?.player?.last_name}
-                  </p>
-                </Box>
-                <Box className="match-formation-player midfielder right">
-                  <img
-                    src={`https://cdn.so3ody.com/scores/people/50x50/${players?.midfielder[2]?.player_id}.png`}
-                    alt="player"
-                  />
-                  <p>
-                    {players?.midfielder[2]?.player?.first_name +
-                      " " +
-                      players?.midfielder[2]?.player?.last_name}
-                  </p>
-                </Box>
-                <Box className="match-formation-player forwarder left">
-                  <img
-                    src={`https://cdn.so3ody.com/scores/people/50x50/${players?.forwarder[0]?.player_id}.png`}
-                    alt="player"
-                  />
-                  <p>
-                    {players?.forwarder[0]?.player?.first_name +
-                      " " +
-                      players?.forwarder[0]?.player?.last_name}
-                  </p>
-                </Box>
-                <Box className="match-formation-player forwarder middle">
-                  <img
-                    src={`https://cdn.so3ody.com/scores/people/50x50/${players?.forwarder[1]?.player_id}.png`}
-                    alt="player"
-                  />
-                  <p>
-                    {players?.forwarder[1]?.player?.first_name +
-                      " " +
-                      players?.forwarder[1]?.player?.last_name}
-                  </p>
-                </Box>
-                <Box className="match-formation-player forwarder right">
-                  <img
-                    src={`https://cdn.so3ody.com/scores/people/50x50/${players?.forwarder[2]?.player_id}.png`}
-                    alt="player"
-                  />
-                  <p>
-                    {players?.forwarder[2]?.player?.first_name +
-                      " " +
-                      players?.forwarder[2]?.player?.last_name}
-                  </p>
-                </Box>
+                {players?.defender?.map((item, index, array) => {
+                  return (
+                    <Box
+                      key={item?.player_id}
+                      className={`match-formation-player defender ${
+                        playerPositionClass?.[array.length]?.[index]
+                      }`}>
+                      <img
+                        src={`https://cdn.so3ody.com/scores/people/50x50/${item?.player_id}.png`}
+                        alt="player"
+                      />
+                      <p>
+                        {item?.player?.first_name +
+                          " " +
+                          item?.player?.last_name}
+                      </p>
+                    </Box>
+                  );
+                })}
+                {players?.midfielder?.map((item, index, array) => {
+                  return (
+                    <Box
+                      key={item?.player_id}
+                      className={`match-formation-player midfielder ${
+                        playerPositionClass?.[array.length]?.[index]
+                      }`}>
+                      <img
+                        src={`https://cdn.so3ody.com/scores/people/50x50/${item?.player_id}.png`}
+                        alt="player"
+                      />
+                      <p>
+                        {item?.player?.first_name +
+                          " " +
+                          item?.player?.last_name}
+                      </p>
+                    </Box>
+                  );
+                })}
+                {players?.forwarder?.map((item, index, array) => {
+                  return (
+                    <Box
+                      key={item?.player_id}
+                      className={`match-formation-player forwarder ${
+                        playerPositionClass?.[array.length]?.[index]
+                      }`}>
+                      <img
+                        src={`https://cdn.so3ody.com/scores/people/50x50/${item?.player_id}.png`}
+                        alt="player"
+                      />
+                      <p>
+                        {item?.player?.first_name +
+                          " " +
+                          item?.player?.last_name}
+                      </p>
+                    </Box>
+                  );
+                })}
               </>
             )}
 
@@ -259,7 +201,7 @@ const MatchFormation = () => {
                       </Box>
                     </Box>
                     <Box className="match-bench-player-position">
-                      {item?.main_position}
+                      {playerPosition[item?.main_position]}
                     </Box>
                   </Box>
                 </Box>
