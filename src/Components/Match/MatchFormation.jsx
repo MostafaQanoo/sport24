@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
-import { player, stadium } from "../../assets/images";
+import { stadium } from "../../assets/images";
 import { getFormation } from "../../Services";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
@@ -37,6 +37,7 @@ const MatchFormation = () => {
 
   useEffect(() => {
     setPlayers({ defender: [], midfielder: [], forwarder: [], gk: [] });
+    // eslint-disable-next-line array-callback-return
     formationData?.data?.data?.[team]?.line_up?.map((player) => {
       if (player?.main_position === "GK") {
         setPlayers((prev) => ({

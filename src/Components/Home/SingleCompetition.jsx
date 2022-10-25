@@ -2,23 +2,22 @@ import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React, { useEffect, useState } from 'react';
 import { getMatches } from '../../Services';
-import { Link } from 'react-router-dom';
 import SingleMatch from './SingleMatch';
 
 const SingleCompetition = ({ compitition, date }) => {
   const currentSeason = compitition?.currentSeason?.id;
   const [matches, setMatches] = useState([]);
 
-  const fetchMatches = async () => {
-    const response = await getMatches(
-      `season_id=${currentSeason}&date_from=${date}&date=${date}`
-    );
-    setMatches(response?.data?.data);
-  };
-
+  
   useEffect(() => {
+    const fetchMatches = async () => {
+      const response = await getMatches(
+        `season_id=${currentSeason}&date_from=${date}&date=${date}`
+      );
+      setMatches(response?.data?.data);
+    };
     fetchMatches();
-  }, [date]);
+  }, [date, currentSeason]);
 
   const setMatchesComponent = (matches) => {
     if (matches.length === 0){

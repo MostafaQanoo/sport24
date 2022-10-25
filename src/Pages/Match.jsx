@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { Box, Tab, Tabs } from "@mui/material";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { PremierLeague } from "./../assets/images";
 import { calender, stadium } from "./../assets/icons";
-import { teamA, teamB } from "./../assets/images";
 import { getFormation, getHeadToHead } from "../Services";
 import { useQuery } from "@tanstack/react-query";
 import { RangeTeamsGoals } from "../Components";
