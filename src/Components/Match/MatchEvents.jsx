@@ -74,7 +74,7 @@ const MatchEvents = () => {
           <TimelineContent></TimelineContent>
         </TimelineItem>
         {matches?.map((item, index) => (
-          <TimelineItem>
+          <TimelineItem key={item?.player_id}>
             <TimelineOppositeContent color="text.secondary">
               {item?.player?.first_name} {item?.player?.last_name}
             </TimelineOppositeContent>

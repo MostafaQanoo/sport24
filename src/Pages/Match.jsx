@@ -51,7 +51,6 @@ const Match = () => {
   );
 
   useEffect(() => {
-    console.log("headToHeadData: ", headToHeadData?.data?.data);
     setHeadToHead(
       headToHeadData?.data?.data[headToHeadData?.data?.data.length - 1]
     );
