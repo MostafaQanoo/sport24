@@ -9,7 +9,7 @@ const axiosRequest = async (method, url, data = null, params = null) => {
     method,
     url,
     headers: {
-      authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+      authorization: `Bearer ${JSON.parse(localStorage.getItem("token")) || ""}`,
       "Content-Type": "application/json",
     },
     data,
