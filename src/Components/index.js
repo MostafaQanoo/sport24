@@ -22,3 +22,6 @@ export {
   TeamsSlider,
   Competitions,
 } from './Home'
+export {
+  SingleTeamStatistics,
+} from './Team'

@@ -10,5 +10,6 @@ export {
   getCompTable,
   getSinglePlayer,
   getPlayerTransfer,
-  getSingleTeam
+  getSingleTeam,
+  getSquad,
 } from "./api/index";

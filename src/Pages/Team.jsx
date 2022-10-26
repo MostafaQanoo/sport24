@@ -2,8 +2,8 @@ import { Typography } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ListPlayers, MatchesTable } from '../Components';
-import { getMatches, getSingleTeam, getTeams } from '../Services';
+import { ArrangeTable, ListPlayers, MatchesTable, SingleTeamStatistics } from '../Components';
+import { getMatches, getSingleTeam, getSquad } from '../Services';
 
 const Team = () => {
   const { id } = useParams();
@@ -26,7 +26,9 @@ const Team = () => {
       setTeam(response.data.data);
     };
     const fetchSquad = async () => {
-    }
+      const response = await getSquad(`team_id=${id}`);
+      setSquad(response.data.data);
+    };
     fetchSquad();
     fetchTeam();
     fetchMatches();
@@ -54,6 +56,9 @@ const Team = () => {
           </Box>
 
           <MatchesTable matches={matches} seasonId={seasonId} />
+
+          <ArrangeTable />
+          <SingleTeamStatistics />
         </main>
       </Box>
       <Box flex='1'>

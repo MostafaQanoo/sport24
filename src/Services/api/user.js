@@ -25,3 +25,4 @@ export const getSinglePlayer = (params) =>
   axiosRequest("get", `/getSinglePeople?${params}`);
 export const getPlayerTransfer = (params) =>
   axiosRequest("get", `/people/transfers?${params}`);
+export  const getSquad = (params) => axiosRequest("get", `/team/squad?${params}`);
