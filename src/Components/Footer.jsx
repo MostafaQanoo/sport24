@@ -14,6 +14,7 @@ const MainContainer = Styled.div`
     background-color: rgba(247, 247, 247, 1);
     padding: 1.5rem;
     margin-bottom: 2rem;
+    margin-top: 2rem;
 `;
 
 const ContainerGoTop = Styled.div`

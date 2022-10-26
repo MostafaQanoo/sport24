@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import React from 'react';
-import { TransitionPlayer } from '../Components';
+import { ListPlayers, TransitionPlayer } from '../Components';
 
 const Team = () => {
   return (
@@ -37,7 +37,7 @@ const Team = () => {
       </Box>
       <Box flex='1'>
         <aside>
-          <TransitionPlayer />
+          <ListPlayers />
         </aside>
       </Box>
     </>
