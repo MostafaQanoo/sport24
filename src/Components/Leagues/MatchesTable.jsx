@@ -9,12 +9,14 @@ import { Link } from 'react-router-dom';
 
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 
-const MatchesTable = ({ matches }) => {
+const MatchesTable = ({ matches, seasonId }) => {
   const [age, setAge] = useState('');
 
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+
+  console.log(matches);
 
   return (
     <section className='matches-table-sec'>
@@ -56,12 +58,13 @@ const MatchesTable = ({ matches }) => {
         >
           <Typography variant='body2'>{match?.timing?.split(" ")[0]}</Typography>
 
-          <Box
+          <Link to={`/team/${match?.teamA?.id}?season_id=${seasonId}`}
             display='flex'
             flexDirection='column'
             alignItems='center'
             justifyContent='space-between'
             height='90%'
+            style={{ textDecoration: 'none', color: '#000' }}
           >
             <img
               width='34px'
@@ -71,7 +74,7 @@ const MatchesTable = ({ matches }) => {
               alt=''
             />
             <Typography>{match?.teamA?.name}</Typography>
-          </Box>
+          </Link>
 
           <Stack direction='column' justifyContent='space-between' height='90%'>
             <Box
@@ -94,12 +97,13 @@ const MatchesTable = ({ matches }) => {
             <Typography textAlign='center'>{match?.timing?.split(" ")[1]?.slice(0, -3)}</Typography>
           </Stack>
 
-          <Box
+          <Link to={`/team/${match?.teamB?.id}?season_id=${seasonId}`}
             display='flex'
             flexDirection='column'
             alignItems='center'
             justifyContent='space-between'
             height='90%'
+            style={{ textDecoration: 'none', color: '#000' }}
           >
             <img
               width='34px'
@@ -109,7 +113,7 @@ const MatchesTable = ({ matches }) => {
               alt=''
             />
             <Typography>{match?.teamB?.name}</Typography>
-          </Box>
+          </Link>
 
           <Link
             to={`/match/${match?.id}`}

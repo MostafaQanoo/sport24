@@ -37,7 +37,7 @@ const Leagues = () => {
             leagueImage={`https://cdn.so3ody.com/scores/competitions/100x130/${path}.png`}
             leagueName={""}
           />
-          <MatchesTable matches={matches} />
+          <MatchesTable matches={matches} seasonId={seasonId} />
           <ArrangeTable />
           <TeamStatistics />
         </main>
