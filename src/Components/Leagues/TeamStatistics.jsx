@@ -6,7 +6,7 @@ const TeamStatistics = () => {
     <section className='stats-sec'>
       <h3 className='sec-title'>إحصائيات الفريق</h3>
       <Grid container spacing={2} style={{justifyContent: 'center'}}>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <div className='single-stat'>
             <h4 className="stat-title">الأكثر تسجيل للأهداف</h4>
             <div className="card-body">
@@ -43,7 +43,7 @@ const TeamStatistics = () => {
             </div>
           </div>
         </Grid>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <div className='single-stat'>
             <h4 className="stat-title">الأكثر تسجيل للأهداف</h4>
             <div className="card-body">
@@ -80,7 +80,7 @@ const TeamStatistics = () => {
             </div>
           </div>
         </Grid>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <div className='single-stat'>
             <h4 className="stat-title">الأكثر تسجيل للأهداف</h4>
             <div className="card-body">
@@ -117,7 +117,7 @@ const TeamStatistics = () => {
             </div>
           </div>
         </Grid>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <div className='single-stat'>
             <h4 className="stat-title">الأكثر تسجيل للأهداف</h4>
             <div className="card-body">
@@ -154,7 +154,7 @@ const TeamStatistics = () => {
             </div>
           </div>
         </Grid>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <div className='single-stat'>
             <h4 className="stat-title">الأكثر تسجيل للأهداف</h4>
             <div className="card-body">

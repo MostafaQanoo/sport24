@@ -25,11 +25,19 @@ const TeamsSlider = () => {
           direction: 'rtl',
           pagination: false,
           gap: '1rem',
+          breakpoints: {
+            1000: {
+              perPage: 3,
+            },
+            700: {
+              perPage: 2,
+            },
+          },
         }}
       >
         {teams?.map((team) => (
           <SplideSlide key={team?.id}>
-            <div className="single-slide">
+            <div className='single-slide'>
               <img
                 src={`https://cdn.so3ody.com/scores/teams/50x50/${team?.id}.png`}
                 alt={team?.name}

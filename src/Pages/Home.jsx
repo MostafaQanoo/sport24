@@ -11,7 +11,7 @@ const Home = () => {
           <Competitions />
         </main>
       </Box>
-      <Box flex='1'>
+      <Box flex='1' className='right-side'>
         <RangeTeamsGoals />
       </Box>
     </>

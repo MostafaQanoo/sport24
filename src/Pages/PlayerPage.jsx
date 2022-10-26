@@ -24,7 +24,7 @@ const PlayerPage = () => {
           <MainInfo player={player} />
         </main>
       </Box>
-      <Box flex='1'>
+      <Box flex='1' className='right-side'>
         <aside>
           <TransitionPlayer playerId={id} role={player?.position} />
         </aside>

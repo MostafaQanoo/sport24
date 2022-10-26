@@ -59,7 +59,7 @@ const Team = () => {
           <SingleTeamStatistics />
         </main>
       </Box>
-      <Box flex='1'>
+      <Box flex='1' className='right-side'>
         <aside>
           <ListPlayers teamId={id} squad={squad} />
         </aside>
