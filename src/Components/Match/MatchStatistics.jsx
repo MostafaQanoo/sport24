@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getFormation, getHeadToHead, getStatistics } from "./../../Services";
+import { v4 as uuidv4 } from "uuid";
 
 const MatchStatistics = () => {
   const { pathname } = useLocation();
@@ -140,7 +141,7 @@ const MatchStatistics = () => {
   return (
     <Box className="statistic-cards">
       {match.map(({ key, id, nameAr }) => (
-        <Box key={id} className="statistic-card">
+        <Box key={uuidv4()} className="statistic-card">
           <Box
             className={`
             badge ${

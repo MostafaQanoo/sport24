@@ -4,6 +4,7 @@ import { win, lose, draw, leftArrow } from "../../assets/icons";
 import { Link, useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getFormation, getHeadToHead } from "./../../Services";
+import { v4 as uuidv4 } from "uuid";
 
 const MatchOverview = () => {
   const { pathname } = useLocation();
@@ -57,7 +58,7 @@ const MatchOverview = () => {
                 if (index < 5) {
                   return (
                     <img
-                      key={index}
+                      key={uuidv4()}
                       src={
                         match === "win" ? win : match === "lose" ? lose : draw
                       }
@@ -85,7 +86,7 @@ const MatchOverview = () => {
                 if (index < 5) {
                   return (
                     <img
-                      key={index}
+                      key={uuidv4()}
                       src={
                         match === "win" ? win : match === "lose" ? lose : draw
                       }
@@ -105,7 +106,7 @@ const MatchOverview = () => {
         {headToHeadData?.data?.data?.map((item, index) => {
           if (index < 5) {
             return (
-              <Box key={item?.id} className="direct-confrontations-card">
+              <Box key={uuidv4()} className="direct-confrontations-card">
                 <Box>{item?.timing}</Box>
                 <Box className="blur-card">
                   <Box className="team">

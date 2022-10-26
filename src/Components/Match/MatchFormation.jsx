@@ -4,6 +4,7 @@ import { stadium } from "../../assets/images";
 import { getFormation } from "../../Services";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const MatchFormation = () => {
   const [value, setValue] = useState(0);
@@ -121,7 +122,7 @@ const MatchFormation = () => {
                   return (
                     <Link to={`/player/${item?.player_id}`}>
                       <Box
-                        key={item?.player_id}
+                        key={uuidv4()}
                         className={`match-formation-player defender ${
                           playerPositionClass?.[array.length]?.[index]
                         }`}>
@@ -142,7 +143,7 @@ const MatchFormation = () => {
                   return (
                     <Link to={`/player/${item?.player_id}`}>
                       <Box
-                        key={item?.player_id}
+                        key={uuidv4()}
                         className={`match-formation-player midfielder ${
                           playerPositionClass?.[array.length]?.[index]
                         }`}>
@@ -163,7 +164,7 @@ const MatchFormation = () => {
                   return (
                     <Link to={`/player/${item?.player_id}`}>
                       <Box
-                        key={item?.player_id}
+                        key={uuidv4()}
                         className={`match-formation-player forwarder ${
                           playerPositionClass?.[array.length]?.[index]
                         }`}>
@@ -196,7 +197,7 @@ const MatchFormation = () => {
             (item, index) => {
               return (
                 <Link to={`/player/${item?.player_id}`} className="text-link">
-                  <Box key={index} className="match-bench-player">
+                  <Box key={uuidv4()} className="match-bench-player">
                     <Box className="match-bench-player-img">
                       <img
                         src={`https://cdn.so3ody.com/scores/people/50x50/${item?.player_id}.png`}

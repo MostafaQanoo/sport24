@@ -11,26 +11,8 @@ import {
   getCompetitions,
 } from "./../../Services/api/user";
 import { Link } from "react-router-dom";
-
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import rtlPlugin from "stylis-plugin-rtl";
-import { CacheProvider } from "@emotion/react";
-import createCache from "@emotion/cache";
-import { prefixer } from "stylis";
-
-// Create rtl cache
-const cacheRtl = createCache({
-  key: "muirtl",
-  stylisPlugins: [prefixer, rtlPlugin],
-});
-
-function RTL(props) {
-  return <CacheProvider value={cacheRtl}>{props.children}</CacheProvider>;
-}
-
-const theme = createTheme({
-  direction: "rtl",
-});
+import RTL from "../RTL";
+import { v4 as uuidv4 } from "uuid";
 
 const RangeTeamsGoals = () => {
   const [value, setValue] = useState("1");
@@ -46,7 +28,7 @@ const RangeTeamsGoals = () => {
   const [competitions, setCompetitions] = useState([]);
   const fetchCompititions = async () => {
     const response = await getCompetitions("");
-    console.log("sdf", response.data.data.slice(0, 5));
+
     setCompetitions([...response.data.data.slice(0, 5)]);
   };
 
@@ -72,34 +54,34 @@ const RangeTeamsGoals = () => {
           mx: "10px",
           mt: "20px",
         }}>
-        <CacheProvider value={cacheRtl}>
-          <ThemeProvider theme={theme}>
-            <Box
-              dir="rtl"
-              sx={{
-                width: "100%",
-              }}>
-              <FormControl fullWidth>
-                <InputLabel id="competitions-label">الترتيب</InputLabel>
-                <Select
-                  dir="rtl"
-                  labelId="competitions-select-label"
-                  id="competitions-select"
-                  value={seasonId}
-                  label="الترتيب"
-                  onChange={handleChangeSelect}>
-                  {competitions.map((compitition, index) => {
-                    return (
-                      <MenuItem value={compitition?.currentSeason?.id}>
-                        {compitition?.name}
-                      </MenuItem>
-                    );
-                  })}
-                </Select>
-              </FormControl>
-            </Box>
-          </ThemeProvider>
-        </CacheProvider>
+        <Box
+          dir="rtl"
+          sx={{
+            width: "100%",
+          }}>
+          <RTL>
+            <FormControl fullWidth>
+              <InputLabel id="competitions-label">الترتيب</InputLabel>
+              <Select
+                dir="rtl"
+                labelId="competitions-select-label"
+                id="competitions-select"
+                value={seasonId}
+                label="الترتيب"
+                onChange={handleChangeSelect}>
+                {competitions.map((competition, index) => {
+                  return (
+                    <MenuItem
+                      key={uuidv4()}
+                      value={competition?.currentSeason?.id}>
+                      {competition?.name}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </FormControl>
+          </RTL>
+        </Box>
       </Box>
       <Box
         sx={{
@@ -188,7 +170,7 @@ const RangeTeamsGoals = () => {
 
                 {competitionsData?.data?.data?.table.map((item, index) => (
                   <tr
-                    key={item?.id}
+                    key={uuidv4()}
                     style={{
                       textAlign: "end",
                       borderBottom: "1px solid #dfdfdf",
@@ -283,7 +265,7 @@ const RangeTeamsGoals = () => {
                   </tr>
                   {array.map((e) => (
                     <tr
-                      key={Math.random()}
+                      key={uuidv4()}
                       style={{
                         textAlign: "end",
                         borderBottom: "1px solid #d4d4d4",
