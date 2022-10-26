@@ -16,8 +16,8 @@ export const getEvents = (match_id) =>
   axiosRequest("get", `/matches/events?match_id=${match_id}`);
 export const getStatistics = (match_id) =>
   axiosRequest("get", `/matches/all/team/statistics?match_id=${match_id}`);
-export const getOrderCompetitions = () =>
-  axiosRequest("get", `/competitions/table?season_id=1976986618`);
+export const getOrderCompetitions = (params) =>
+  axiosRequest("get", `/competitions/table?${params}`);
 export const getCompTable = (params) =>
   axiosRequest("get", `/competitions/table?${params}`);
 export const getSinglePlayer = (params) =>
