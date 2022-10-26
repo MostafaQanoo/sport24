@@ -1,10 +1,11 @@
-import { AccountCircle } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
-import { Box } from "@mui/system";
-import React from "react";
-import Sport from "../assets/images/Sport.png";
-import styled from "@emotion/styled";
-import Sidebar from "./Sidebar";
+import { AccountCircle } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
+import { Box } from '@mui/system';
+import React from 'react';
+import Sport from '../assets/images/Sport.png';
+import styled from '@emotion/styled';
+import Sidebar from './Sidebar';
+import { Link } from 'react-router-dom';
 
 const StackTopBar = styled.div`
   display: flex;
@@ -21,21 +22,24 @@ const NavbarMobile = ({ mobileBar, setMobileBar }) => {
   //   setAnchorEl(event.currentTarget);
   // };
 
-  const menuId = "primary-search-account-menu";
+  const menuId = 'primary-search-account-menu';
 
   return (
-    <Box sx={{ boxShadow: "0px 0px 12px #d5d5d5", padding: "1px 25px" }}>
+    <Box sx={{ boxShadow: '0px 0px 12px #d5d5d5', padding: '1px 25px' }}>
       <StackTopBar>
         <Sidebar mobileBar={mobileBar} />
-        <img width={120} src={Sport} alt="" />
+        <Link to='/'>
+          <img src={Sport} alt='Sport' />
+        </Link>
         <IconButton
-          size="large"
-          edge="end"
-          aria-label="account of current user"
+          size='large'
+          edge='end'
+          aria-label='account of current user'
           aria-controls={menuId}
-          aria-haspopup="true"
+          aria-haspopup='true'
           // onClick={handleProfileMenuOpen}
-          color="inherit">
+          color='inherit'
+        >
           <AccountCircle />
         </IconButton>
       </StackTopBar>

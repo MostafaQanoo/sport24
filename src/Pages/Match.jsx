@@ -132,7 +132,7 @@ const Match = () => {
           <Outlet />
         </main>
       </Box>
-      <Box flex="1">
+      <Box flex="1" className="right-side">
         <RangeTeamsGoals />
       </Box>
     </>

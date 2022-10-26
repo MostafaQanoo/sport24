@@ -46,7 +46,7 @@ const MatchesTable = ({ matches, seasonId }) => {
           style={{
             padding: '1rem 2rem',
             borderBottom: '1px solid #eee',
-            height: '80px',
+            minHeight: '80px',
             marginBottom: '1.5rem',
             justifyContent: 'space-between',
             alignItems: 'center',
@@ -126,6 +126,7 @@ const MatchesTable = ({ matches, seasonId }) => {
           </Link>
 
           <Link
+            className='match-page'
             to={`/match/${match?.id}`}
             color='inherit'
             style={{ display: 'flex', alignItems: 'center', color: '#000' }}

@@ -11,7 +11,7 @@ ul {
 .flex-header li {
   border-left: 1px solid #ccc;
 }
-.flex-header a {
+.flex-header span {
   color: #555;
   text-decoration: none;
   transition: 0.3s all;
@@ -117,7 +117,6 @@ ul {
 
 /* Start Player Style */
 .player {
-  height: 240px;
   /* background-image: url("./img/backgroundPlayer.png"); */
   background-position: center;
   background-repeat: no-repeat;
@@ -151,12 +150,6 @@ ul {
 .MuiList-root.MuiList-padding.css-h4y409-MuiList-root {
   padding: 0;
   color: #4d4d4d;
-}
-
-@media screen and (max-width: 768px) {
-  .player {
-    height: 180px;
-  }
 }
 
 table,
@@ -615,7 +608,7 @@ table .css-1ex1afd-MuiTableCell-root {
   max-width: 500px;
 }
 .tabs .btn {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 3rem;
   outline: none;
   box-shadow: none;
   border-radius: 3rem;
@@ -623,7 +616,6 @@ table .css-1ex1afd-MuiTableCell-root {
   background-color: transparent;
   cursor: pointer;
   text-align: center;
-  width: 28%;
 }
 .tabs .btn.active {
   background-color: #234ec4;
@@ -928,4 +920,58 @@ table .css-1ex1afd-MuiTableCell-root {
 /* Matches Table */
 .matches-table-sec {
   margin-bottom: 3rem;
+}
+
+.player-img{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #CCC;
+  object-fit: contain;
+  margin-bottom: .5rem;
+
+}
+
+
+@media screen and (max-width: 1100px) {
+  .right-side{
+    display: none;
+  }
+}
+@media screen and (max-width: 850px) {
+  .teams-sec{
+    display: none;
+  }
+  .compititions-sec{
+    margin-top: 3rem;
+  }
+  .tabs .btn{
+    padding: .5rem 1.5rem;
+  }
+  .match-page{
+    display: none !important;
+  }
+  .css-m69qwo-MuiStack-root{
+    flex-wrap: wrap;
+  }
+  .css-e784if-MuiTypography-root{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+}
+@media screen and (max-width: 550px) {
+  .single-match{
+    padding: 1rem;
+  }
+  .single-match .compitition{
+    margin-bottom: 1rem;
+  }
+  .css-1lb2ij0{
+    display: none !important;
+  }
+  .css-3i81xw, .css-yvsrtc, .css-1egdoq2, .css-15uckw6{
+    width: auto;
+  }
+  
 }

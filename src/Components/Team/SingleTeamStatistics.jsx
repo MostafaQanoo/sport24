@@ -30,7 +30,7 @@ const SingleTeamStatistics = () => {
         alignItems='center'
       >
         {/* 1 */}
-        <Stack width={widthCol} display='flex' justifyContent='space-between'>
+        <Stack width={widthCol} display='flex' justifyContent='space-between' marginBottom={'1rem'}>
           <List
             style={{
               display: 'flex',
@@ -114,7 +114,7 @@ const SingleTeamStatistics = () => {
         </Stack>
 
         {/* 2 الأكثر استقبالاً للأهداف */}
-        <Stack width={widthCol} display='flex' justifyContent='space-between'>
+        <Stack width={widthCol} display='flex' justifyContent='space-between' marginBottom={'1rem'}>
           <List
             style={{
               display: 'flex',
@@ -198,7 +198,7 @@ const SingleTeamStatistics = () => {
         </Stack>
 
         {/* 3 الأكثر تسديدا علي المرمى */}
-        <Stack width={widthCol} display='flex' justifyContent='space-between'>
+        <Stack width={widthCol} display='flex' justifyContent='space-between' marginBottom={'1rem'}>
           <List
             style={{
               display: 'flex',

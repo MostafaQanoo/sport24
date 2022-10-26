@@ -1,15 +1,9 @@
-import {
-  Alert,
-  Box,
-  IconButton,
-  List,
-  Typography,
-} from "@mui/material";
-import { Stack } from "@mui/system";
-import React from "react";
-import { Link } from "react-router-dom";
-import SearchIcon from "@mui/icons-material/Search";
-import { AccountCircle } from "@mui/icons-material";
+import { Alert, Box, IconButton, List, Typography } from '@mui/material';
+import { Stack } from '@mui/system';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
+import { AccountCircle } from '@mui/icons-material';
 
 const Navbar = () => {
   // const [anchorEl, setAnchorEl] = React.useState(null);
@@ -18,58 +12,60 @@ const Navbar = () => {
   //   setAnchorEl(event.currentTarget);
   // };
 
-  const menuId = "primary-search-account-menu";
+  const menuId = 'primary-search-account-menu';
 
   return (
     // <AppBar>
     <Box>
       <Box>
         <Stack
-          direction="row"
+          direction='row'
           spacing={2}
-          justifyContent="space-between"
-          borderBottom="solid #e0e0e0 1px">
-          <List className="flex-header">
+          justifyContent='space-between'
+          borderBottom='solid #e0e0e0 1px'
+        >
+          <List className='flex-header'>
             <li>
-              <Link to="sa">مقال</Link>
+              <span>مقال</span>
             </li>
             <li>
-              <Link to="sa">دوليات</Link>{" "}
+              <span>دوليات</span>
             </li>
             <li>
-              <Link to="sa">متابعات</Link>
+              <span>متابعات</span>
             </li>
             <li>
-              <Link to="sa">تقنية</Link>
+              <span>تقنية</span>
             </li>
             <li>
-              <Link to="sa">تجارة واسوق</Link>
+              <span>تجارة واسوق</span>
             </li>
             <li>
-              <Link to="sa">منوعات</Link>
+              <span>منوعات</span>
             </li>
             <li>
-              <Link to="sa">طب</Link>
+              <span>طب</span>
             </li>
           </List>
 
-          <List className="flex-icon">
+          <List className='flex-icon'>
             <li>
-              <Link to="/login">الدخول / التسجيل</Link>
+              <Link to=''>الدخول / التسجيل</Link>
             </li>
             <li>
               <IconButton
-                size="large"
-                edge="end"
-                aria-label="account of current user"
+                size='large'
+                edge='end'
+                aria-label='account of current user'
                 aria-controls={menuId}
-                aria-haspopup="true"
+                aria-haspopup='true'
                 // onClick={handleProfileMenuOpen}
-                color="inherit">
+                color='inherit'
+              >
                 <AccountCircle />
               </IconButton>
 
-              <IconButton size="large" aria-label="search" color="inherit">
+              <IconButton size='large' aria-label='search' color='inherit'>
                 <SearchIcon />
               </IconButton>
             </li>
@@ -78,8 +74,9 @@ const Navbar = () => {
       </Box>
 
       <Alert
-        className="alert-mui"
-        sx={{ background: "#234EC4", color: "#e4e4e4", marginBottom: "20px" }}>
+        className='alert-mui'
+        sx={{ background: '#234EC4', color: '#e4e4e4', marginBottom: '20px' }}
+      >
         <span>اليوم | </span>
         <Typography>
           «التحالف» يدمّر مسيّرتين بالأجواء اليمنية أُطلقت نحو المملكة
