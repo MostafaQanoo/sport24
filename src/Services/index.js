@@ -9,5 +9,6 @@ export {
   getStatistics,
   getCompTable,
   getSinglePlayer,
-  getPlayerTransfer
+  getPlayerTransfer,
+  getSingleTeam
 } from "./api/index";

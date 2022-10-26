@@ -16,8 +16,6 @@ const MatchesTable = ({ matches, seasonId }) => {
     setAge(event.target.value);
   };
 
-  console.log(matches);
-
   return (
     <section className='matches-table-sec'>
       <Stack
@@ -49,22 +47,28 @@ const MatchesTable = ({ matches, seasonId }) => {
             padding: '1rem 2rem',
             borderBottom: '1px solid #eee',
             height: '80px',
-            marginBottom: '1.5rem'
+            marginBottom: '1.5rem',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
           direction='row'
-          justifyContent='space-between'
-          alignItems='center'
           key={match?.id}
         >
-          <Typography variant='body2'>{match?.timing?.split(" ")[0]}</Typography>
+          <Typography variant='body2'>
+            {match?.timing?.split(' ')[0]}
+          </Typography>
 
-          <Link to={`/team/${match?.teamA?.id}?season_id=${seasonId}`}
-            display='flex'
-            flexDirection='column'
-            alignItems='center'
-            justifyContent='space-between'
-            height='90%'
-            style={{ textDecoration: 'none', color: '#000' }}
+          <Link
+            to={`/team/${match?.teamA?.id}?season_id=${seasonId}`}
+            style={{
+              textDecoration: 'none',
+              color: '#000',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              height: '90%',
+            }}
           >
             <img
               width='34px'
@@ -94,16 +98,22 @@ const MatchesTable = ({ matches, seasonId }) => {
                 {match?.scoreB}
               </Typography>
             </Box>
-            <Typography textAlign='center'>{match?.timing?.split(" ")[1]?.slice(0, -3)}</Typography>
+            <Typography textAlign='center'>
+              {match?.timing?.split(' ')[1]?.slice(0, -3)}
+            </Typography>
           </Stack>
 
-          <Link to={`/team/${match?.teamB?.id}?season_id=${seasonId}`}
-            display='flex'
-            flexDirection='column'
-            alignItems='center'
-            justifyContent='space-between'
-            height='90%'
-            style={{ textDecoration: 'none', color: '#000' }}
+          <Link
+            to={`/team/${match?.teamB?.id}?season_id=${seasonId}`}
+            style={{
+              textDecoration: 'none',
+              color: '#000',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              height: '90%',
+            }}
           >
             <img
               width='34px'

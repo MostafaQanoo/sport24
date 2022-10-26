@@ -2,6 +2,7 @@ import axiosRequest from "./request";
 
 export const getToken = (data) => axiosRequest("post", "/oauth/token", data);
 export const getTeams = () => axiosRequest("get", "/teams");
+export const getSingleTeam = (id) => axiosRequest("get",`/team/${id}`);
 export const getCompetitions = (params) =>
   axiosRequest("get", `/competitions?${params}`);
 export const getMatches = (params) => axiosRequest("get", `/matches?${params}`);
