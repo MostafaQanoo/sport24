@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import InputLabel from '@mui/material/InputLabel';
@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 
 const MatchesTable = ({ matches }) => {
-  const [age, setAge] = React.useState('');
+  const [age, setAge] = useState('');
 
   const handleChange = (event) => {
     setAge(event.target.value);

@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import React from 'react';
-import { ListPlayers } from '../Components';
+import { ListPlayers, MatchesTable } from '../Components';
 
 const Team = () => {
   return (
@@ -33,6 +33,8 @@ const Team = () => {
               </Stack>
             </Stack>
           </Box>
+
+          {/* <MatchesTable /> */}
         </main>
       </Box>
       <Box flex='1'>
