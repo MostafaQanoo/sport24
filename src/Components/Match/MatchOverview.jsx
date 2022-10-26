@@ -101,6 +101,7 @@ const MatchOverview = () => {
       <Divider />
       <p className="title">مواجهات مباشرة</p>
       <Box className="direct-confrontations-cards">
+        {/* eslint-disable-next-line array-callback-return */}
         {headToHeadData?.data?.data?.map((item, index) => {
           if (index < 5) {
             return (
