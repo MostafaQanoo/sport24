@@ -13,6 +13,7 @@ import { goal, yellow_card, red_card } from "./../../assets/icons";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getFormation, getEvents } from "./../../Services";
+import { v4 as uuidv4 } from "uuid";
 
 const MatchEvents = () => {
   const { pathname } = useLocation();
@@ -78,7 +79,7 @@ const MatchEvents = () => {
           <TimelineContent></TimelineContent>
         </TimelineItem>
         {matches?.map((item, index) => (
-          <TimelineItem key={item?.player_id}>
+          <TimelineItem key={uuidv4()}>
             <TimelineOppositeContent color="text.secondary">
               {item?.player?.first_name} {item?.player?.last_name}
             </TimelineOppositeContent>
