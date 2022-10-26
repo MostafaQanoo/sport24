@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import React from 'react';
-import { ListPlayers, TransitionPlayer } from '../Components';
+import { ListPlayers } from '../Components';
 
 const Team = () => {
   return (

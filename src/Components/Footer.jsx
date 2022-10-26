@@ -1,14 +1,14 @@
-import React from "react";
-import Styled from "@emotion/styled";
-import GoTop from "../assets/images/footer/gotop.png";
-import News from "../assets/images/footer/news.png";
-import Facebook from "../assets/images/footer/facebook.png";
-import Twitter from "../assets/images/footer/twitter.png";
-import Telegram from "../assets/images/footer/telegram.png";
-import Instagram from "../assets/images/footer/instagram.png";
-import Youtube from "../assets/images/footer/youtube.png";
-import Linkedin from "../assets/images/footer/linkedin.png";
-import { Container } from "@mui/system";
+import React from 'react';
+import Styled from '@emotion/styled';
+import GoTop from '../assets/images/footer/gotop.png';
+import News from '../assets/images/footer/news.png';
+import Facebook from '../assets/images/footer/facebook.png';
+import Twitter from '../assets/images/footer/twitter.png';
+import Telegram from '../assets/images/footer/telegram.png';
+import Instagram from '../assets/images/footer/instagram.png';
+import Youtube from '../assets/images/footer/youtube.png';
+import Linkedin from '../assets/images/footer/linkedin.png';
+import { Container } from '@mui/system';
 
 const MainContainer = Styled.div`
     background-color: rgba(247, 247, 247, 1);
@@ -100,7 +100,7 @@ const CopyRightWord = Styled.p`
 function Footer() {
   return (
     <MainContainer>
-      <Container maxWidth="xl" className="container">
+      <Container maxWidth='xl' className='container'>
         <ContainerGoTop>
           <GoToTopStyle>العودة الى الاعلى</GoToTopStyle>
           <GoTopIcon src={GoTop} />
