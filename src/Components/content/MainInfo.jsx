@@ -13,7 +13,7 @@ const MainInfo = ({ player }) => {
     <Box flex="3">
       <Box className="player">
         <Stack color="#fff">
-          <img src={`https://cdn.so3ody.com/scores/people/50x50/${player?.id}.png`} alt={player?.name} />
+          <img src={`https://cdn.so3ody.com/scores/people/50x50/${player?.id}.png`} alt={player?.name} className='player-img' />
           <h5>{player?.name}</h5>
           <Stack
             width="96%"
