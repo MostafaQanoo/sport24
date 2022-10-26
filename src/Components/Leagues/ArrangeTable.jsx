@@ -23,8 +23,6 @@ const ArrangeTable = () => {
     fetchTable();
   }, [seasonId]);
 
-  console.log(table);
-
   return (
     <section className='arrange-table-sec'>
       <h3 className='sec-title'>جدول الترتيب</h3>

@@ -20,8 +20,6 @@ const SideInfo = () => {
     fetchCompititions();
   }, []);
 
-  console.log(competitions);
-
   useEffect(() => {
     if (matches) setValue('none');
   }, [matches]);

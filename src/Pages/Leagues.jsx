@@ -21,7 +21,6 @@ const Leagues = () => {
   useEffect(() => {
     const path = pathname.split("/")[2];
     setPath(path);
-    console.log("path: ", path);
     const fetchMatches = async () => {
       const response = await getMatches("season_id=" + seasonId);
       setMatches(response?.data?.data);

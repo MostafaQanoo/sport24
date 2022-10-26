@@ -35,10 +35,6 @@ const MatchOverview = () => {
     });
   }, [formationData]);
 
-  useEffect(() => {
-    console.log("headToHeadData", headToHeadData?.data?.data);
-  }, [headToHeadData]);
-
   if (isLoading || isLoadingHeadToHead) return <div>تحميل...</div>;
 
   return (
@@ -106,7 +102,6 @@ const MatchOverview = () => {
       <p className="title">مواجهات مباشرة</p>
       <Box className="direct-confrontations-cards">
         {headToHeadData?.data?.data?.map((item, index) => {
-          console.log("item", item);
           if (index < 5) {
             return (
               <Box key={item?.id} className="direct-confrontations-card">

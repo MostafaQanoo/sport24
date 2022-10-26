@@ -34,8 +34,6 @@ const Team = () => {
     fetchMatches();
   }, [seasonId, id]);
 
-  console.log(team);
-
   return (
     <>
       <Box flex='3'>

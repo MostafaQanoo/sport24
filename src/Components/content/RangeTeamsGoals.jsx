@@ -23,8 +23,6 @@ const RangeTeamsGoals = () => {
     getOrderCompetitions(`season_id=${seasonId}`)
   );
 
-  console.log(competitionsData?.data?.data?.table);
-
   return (
     <Box>
       <Box

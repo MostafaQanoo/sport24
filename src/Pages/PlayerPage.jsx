@@ -17,8 +17,6 @@ const PlayerPage = () => {
     fetchPlayer();
   }, [id]);
 
-  console.log(player);
-
   return (
     <>
       <Box flex='3'>

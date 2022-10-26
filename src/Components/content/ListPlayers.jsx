@@ -13,8 +13,6 @@ const ListPlayers = ({ teamId, squad }) => {
     else setValueDisplay('flex');
   }, [matches]);
 
-  console.log(squad);
-
   return (
     <Box flex='1' display={valueDisplay} flexDirection='column'>
       <Typography color='blue' padding='5px 0 10px 0'>
