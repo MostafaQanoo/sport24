@@ -6,7 +6,6 @@ import {
   RangeTeamsGoals,
   TeamStatistics,
 } from "../Components";
-import PremierLeague from "../assets/images/premier-league.png";
 import { Box } from "@mui/material";
 import { getMatches } from "../Services";
 import { useLocation } from "react-router-dom";
@@ -26,10 +25,9 @@ const Leagues = () => {
     const fetchMatches = async () => {
       const response = await getMatches("season_id=" + seasonId);
       setMatches(response?.data?.data);
-      console.log("response?.data?.data: ", response?.data?.data);
     };
     fetchMatches();
-  }, [seasonId]);
+  }, [seasonId, pathname]);
 
   return (
     <>
@@ -39,7 +37,7 @@ const Leagues = () => {
             leagueImage={`https://cdn.so3ody.com/scores/competitions/100x130/${path}.png`}
             leagueName={""}
           />
-          <MatchesTable matches={matches} />
+          <MatchesTable matches={matches} seasonId={seasonId} />
           <ArrangeTable />
           <TeamStatistics />
         </main>

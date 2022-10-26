@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-import { Link } from 'react-router-dom';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { getTeams } from '../../Services';
 
@@ -18,7 +17,7 @@ const TeamsSlider = () => {
 
   return (
     <section className='teams-sec'>
-      <h3 className='sec-title'>إختر الفريق</h3>
+      <h3 className='sec-title'>الفِرق</h3>
       <Splide
         options={{
           perPage: 4,
@@ -30,14 +29,14 @@ const TeamsSlider = () => {
       >
         {teams?.map((team) => (
           <SplideSlide key={team?.id}>
-            <Link to={`team/${team?.id}`} className="single-slide">
+            <div className="single-slide">
               <img
                 src={`https://cdn.so3ody.com/scores/teams/50x50/${team?.id}.png`}
                 alt={team?.name}
               />
               <h4>{team?.name}</h4>
               <CheckCircleOutlineIcon className='icon' />
-            </Link>
+            </div>
           </SplideSlide>
         ))}
       </Splide>

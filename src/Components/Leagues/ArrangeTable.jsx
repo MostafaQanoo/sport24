@@ -7,6 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import React, { useEffect, useState } from 'react';
 import { getCompTable } from '../../Services';
+import { Link } from 'react-router-dom';
 
 const ArrangeTable = () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -54,14 +55,14 @@ const ArrangeTable = () => {
                 >
                   <TableCell>{index + 1}</TableCell>
                   <TableCell>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <Link to={`/team/${row?.id}?season_id=${seasonId}`} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
                       <img
                         src={`https://cdn.so3ody.com/scores/teams/50x50/${row?.id}.png`}
                         alt={row?.name}
                         width='30px'
                       />
                       <span>{row?.name}</span>
-                    </div>
+                    </Link>
                   </TableCell>
                   <TableCell>{row?.totalMatches}</TableCell>
                   <TableCell>{row?.totalWonMatches}</TableCell>

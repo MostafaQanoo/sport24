@@ -10,4 +10,6 @@ export {
   getCompTable,
   getSinglePlayer,
   getPlayerTransfer,
+  getSingleTeam,
+  getSquad,
 } from "./user";

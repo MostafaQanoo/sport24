@@ -1,43 +1,69 @@
 import { Typography } from '@mui/material';
 import { Box, Stack } from '@mui/system';
-import React from 'react';
-import { TransitionPlayer } from '../Components';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { ArrangeTable, ListPlayers, MatchesTable, SingleTeamStatistics } from '../Components';
+import { getMatches, getSingleTeam, getSquad } from '../Services';
 
 const Team = () => {
+  const { id } = useParams();
+  const urlParams = new URLSearchParams(window.location.search);
+  const seasonId = urlParams.get('season_id');
+
+  
+  const [matches, setMatches] = useState([]);
+  const [team, setTeam] = useState({});
+  const [squad, setSquad] = useState([]);
+
+  
+  useEffect(() => {
+    const fetchMatches = async () => {
+      const response = await getMatches(`season_id=${seasonId}&team_id=${id}`);
+      setMatches(response.data.data);
+    };
+    const fetchTeam = async () => {
+      const response = await getSingleTeam(id);
+      setTeam(response.data.data);
+    };
+    const fetchSquad = async () => {
+      const response = await getSquad(`team_id=${id}`);
+      setSquad(response.data.data);
+    };
+    fetchSquad();
+    fetchTeam();
+    fetchMatches();
+  }, [seasonId, id]);
+
+  console.log(team);
+
   return (
     <>
       <Box flex='3'>
         <main>
           <Box className='player'>
             <Stack color='#fff'>
-              <img src='https://via.placeholder.com/70' alt='' />
-              <Typography variant='h5'>الدوري الممتاز</Typography>
+              <img src={`https://cdn.so3ody.com/scores/teams/50x50/${id}.png`} alt={team?.name} />
+              <Typography variant='h5'>{team?.name}</Typography>
               <Stack
                 width='96%'
-                // paddingTop={value}
                 margin='0 auto'
                 direction='row'
                 position='relative'
                 justifyContent='center'
               >
-                <Box
-                  width='30%'
-                  display='flex'
-                  alignItems='center'
-                  justifyContent='center'
-                >
-                  <Typography variant='body2'>
-                    المدرب: اولي جانر سولشاير
-                  </Typography>
-                </Box>
               </Stack>
             </Stack>
           </Box>
+
+          <MatchesTable matches={matches} seasonId={seasonId} />
+
+          <ArrangeTable />
+          <SingleTeamStatistics />
         </main>
       </Box>
       <Box flex='1'>
         <aside>
-          <TransitionPlayer />
+          <ListPlayers teamId={id} squad={squad} />
         </aside>
       </Box>
     </>

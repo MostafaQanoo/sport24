@@ -10,10 +10,7 @@ function TableData() {
   ];
 
   return (
-    <div style={{ width: "100%", marginBottom: "2rem" }}>
-      <Typography variant="h5" padding="20px 0 10px">
-        البرتغال
-      </Typography>
+    <div style={{ width: "100%", marginBottom: "2rem", marginTop: '2rem' }}>
       <table style={{ width: "100%" }}>
         <tbody>
           <tr>
@@ -56,7 +53,7 @@ function TableData() {
             <tr
               style={{
                 textAlign: "right",
-                borderBottom: "3px solid red",
+                borderBottom: "1px solid #ccc",
               }}>
               <td style={{ padding: 10 }}>1</td>
               <td style={{ padding: 10 }}>Alfreds Futterkiste</td>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import InputLabel from '@mui/material/InputLabel';
@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom';
 
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 
-const MatchesTable = ({ matches }) => {
-  const [age, setAge] = React.useState('');
+const MatchesTable = ({ matches, seasonId }) => {
+  const [age, setAge] = useState('');
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -47,21 +47,28 @@ const MatchesTable = ({ matches }) => {
             padding: '1rem 2rem',
             borderBottom: '1px solid #eee',
             height: '80px',
-            marginBottom: '1.5rem'
+            marginBottom: '1.5rem',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
           direction='row'
-          justifyContent='space-between'
-          alignItems='center'
           key={match?.id}
         >
-          <Typography variant='body2'>{match?.timing?.split(" ")[0]}</Typography>
+          <Typography variant='body2'>
+            {match?.timing?.split(' ')[0]}
+          </Typography>
 
-          <Box
-            display='flex'
-            flexDirection='column'
-            alignItems='center'
-            justifyContent='space-between'
-            height='90%'
+          <Link
+            to={`/team/${match?.teamA?.id}?season_id=${seasonId}`}
+            style={{
+              textDecoration: 'none',
+              color: '#000',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              height: '90%',
+            }}
           >
             <img
               width='34px'
@@ -71,7 +78,7 @@ const MatchesTable = ({ matches }) => {
               alt=''
             />
             <Typography>{match?.teamA?.name}</Typography>
-          </Box>
+          </Link>
 
           <Stack direction='column' justifyContent='space-between' height='90%'>
             <Box
@@ -91,15 +98,22 @@ const MatchesTable = ({ matches }) => {
                 {match?.scoreB}
               </Typography>
             </Box>
-            <Typography textAlign='center'>{match?.timing?.split(" ")[1]?.slice(0, -3)}</Typography>
+            <Typography textAlign='center'>
+              {match?.timing?.split(' ')[1]?.slice(0, -3)}
+            </Typography>
           </Stack>
 
-          <Box
-            display='flex'
-            flexDirection='column'
-            alignItems='center'
-            justifyContent='space-between'
-            height='90%'
+          <Link
+            to={`/team/${match?.teamB?.id}?season_id=${seasonId}`}
+            style={{
+              textDecoration: 'none',
+              color: '#000',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              height: '90%',
+            }}
           >
             <img
               width='34px'
@@ -109,7 +123,7 @@ const MatchesTable = ({ matches }) => {
               alt=''
             />
             <Typography>{match?.teamB?.name}</Typography>
-          </Box>
+          </Link>
 
           <Link
             to={`/match/${match?.id}`}
