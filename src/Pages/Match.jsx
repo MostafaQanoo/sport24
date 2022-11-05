@@ -5,9 +5,11 @@ import { calender, stadium } from "./../assets/icons";
 import { getFormation, getHeadToHead } from "../Services";
 import { useQuery } from "@tanstack/react-query";
 import { RangeTeamsGoals } from "../Components";
+import { getToken } from "./../Services/api/user";
 
 const Match = () => {
   const { pathname } = useLocation();
+  const [token, setToken] = useState("");
   const [value, setValue] = useState(0);
   const [matchId, setMatchId] = useState(0);
   const [headToHead, setHeadToHead] = useState(null);
@@ -16,11 +18,30 @@ const Match = () => {
     teamB: 0,
   });
 
+  const { REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET, REACT_APP_GRANT_TYPE } =
+    process.env;
+
+  const { data } = useQuery(["token"], () =>
+    getToken({
+      client_id: REACT_APP_CLIENT_ID,
+      client_secret: REACT_APP_CLIENT_SECRET,
+      grant_type: REACT_APP_GRANT_TYPE,
+    })
+  );
+
+  useEffect(() => {
+    localStorage.setItem(
+      "token",
+      JSON.stringify(data?.data?.data?.access_token)
+    );
+    setToken(data?.data?.data?.access_token);
+  }, [data, token]);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const { data: formationData } = useQuery(["formation", matchId], () =>
+  const { data: formationData } = useQuery(["formation", matchId, token], () =>
     getFormation(matchId)
   );
 
@@ -36,6 +57,7 @@ const Match = () => {
     }
 
     const matchId = pathname.split("/")[2];
+
     setMatchId(matchId);
   }, [pathname]);
 
@@ -129,7 +151,7 @@ const Match = () => {
               <Tab label="إحصائيات" />
             </Link>
           </Tabs>
-          <Outlet />
+          <Outlet context={[token]} />
         </main>
       </Box>
       <Box flex="1" className="right-side">

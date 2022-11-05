@@ -3,14 +3,9 @@ import { Outlet } from "react-router-dom";
 import { Stack, useMediaQuery } from "@mui/material";
 import { Container } from "@mui/system";
 import { useState } from "react";
-import {
-  SideInfo,
-  Footer,
-  Navbar,
-  NavbarMobile,
-  TopNav,
-} from "../Components";
+import { SideInfo, Footer, Navbar, NavbarMobile, TopNav } from "../Components";
 import "./style.css";
+import SwiperMatches from "./../Components/content/SwiperMatches";
 
 const Layout = () => {
   const matches = useMediaQuery("(max-width:1000px)");
@@ -25,7 +20,7 @@ const Layout = () => {
           <Container maxWidth="xl" className="container">
             <TopNav />
             <Navbar />
-            {/* <SwiperMatches /> */}
+            <SwiperMatches />
           </Container>
         </>
       )}

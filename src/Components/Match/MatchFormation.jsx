@@ -5,8 +5,10 @@ import { getFormation } from "../../Services";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { useOutletContext } from "react-router-dom";
 
 const MatchFormation = () => {
+  const [token] = useOutletContext();
   const [value, setValue] = useState(0);
   const [team, setTeam] = useState("teamA");
   const { pathname } = useLocation();
@@ -33,7 +35,7 @@ const MatchFormation = () => {
   }, [pathname]);
 
   const { data: formationData, isLoading } = useQuery(
-    ["formation", matchId],
+    ["formation", matchId, token],
     () => getFormation(matchId)
   );
 
