@@ -5,8 +5,10 @@ import { Link, useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getFormation, getHeadToHead } from "./../../Services";
 import { v4 as uuidv4 } from "uuid";
+import { useOutletContext } from "react-router-dom";
 
 const MatchOverview = () => {
+  const [token] = useOutletContext();
   const { pathname } = useLocation();
   const [matchId, setMatchId] = useState(0);
   const [teamsIds, setTeamsIds] = useState({
@@ -20,12 +22,12 @@ const MatchOverview = () => {
   }, [pathname]);
 
   const { data: formationData, isLoading } = useQuery(
-    ["formation", matchId],
+    ["formation", matchId, token],
     () => getFormation(matchId)
   );
 
   const { data: headToHeadData, isLoading: isLoadingHeadToHead } = useQuery(
-    ["headToHead", teamsIds],
+    ["headToHead", teamsIds, token],
     () => getHeadToHead(teamsIds)
   );
 

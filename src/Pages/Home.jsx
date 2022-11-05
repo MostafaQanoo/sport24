@@ -1,17 +1,17 @@
-import { Box } from '@mui/system';
-import React from 'react';
-import { Competitions, RangeTeamsGoals, TeamsSlider } from '../Components';
+import { Box } from "@mui/system";
+import React from "react";
+import { Competitions, RangeTeamsGoals, TeamsSlider } from "../Components";
 
 const Home = () => {
   return (
     <>
-      <Box flex='3'>
+      <Box flex="3">
         <main>
           <TeamsSlider />
           <Competitions />
         </main>
       </Box>
-      <Box flex='1' className='right-side'>
+      <Box flex="1" className="right-side">
         <RangeTeamsGoals />
       </Box>
     </>
