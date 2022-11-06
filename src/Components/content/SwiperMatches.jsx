@@ -1,69 +1,129 @@
 import React, { useEffect, useRef, useState } from "react";
-// eslint-disable-next-line
 import "swiper/swiper-bundle.min.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import "swiper/css/bundle";
-// import "swiper/css";
-// import "swiper/css/free-mode";
-// import "swiper/css/pagination";
-// import "swiper/css/navigation";
-
 import "swiper/swiper.min.css";
 import "swiper/modules/free-mode/free-mode.min.css";
-import "swiper/modules/pagination/pagination.min.css";
 import "swiper/modules/navigation/navigation.min.css";
-
-// import required modules
 import { FreeMode, Navigation } from "swiper";
 import { Box } from "@mui/system";
 import { Button, Stack, Typography, useMediaQuery } from "@mui/material";
-
-import { default as Madrid } from "../../assets/images/team-a.png";
-import { default as Lego } from "../../assets/images/team-b.png";
+import { getCompetitions, getMatches } from "../../Services";
+import { todayDate, tomorrowDate, yesterdayDate } from "../../Utils";
 
 const SwiperMatches = () => {
-  const [teams, setTeams] = useState(null);
-  const [valueApi, setValueApi] = useState("http://localhost:5000/today");
-  const [typeApi, setTypeApi] = useState("today");
-
-  useEffect(() => {
-    // if(typeApi === "today") {
-    //   setValueApi("http://localhost:5000/today")
-    // } else if (typeApi === "tommorw") {
-    //   setValueApi("http://localhost:5000/tomorow")
-    // } else {
-    //   setValueApi("http://localhost:5000/tomorow")
-    // }
-  }, [typeApi]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      // const response = await fetch(valueApi)
-      // const data = await response.json();
-      // setTeams(data)
-      // console.log(data)
-    };
-
-    fetchData();
-  }, [valueApi]);
-
+  const [date, setDate] = useState(["today", todayDate()]);
+  const [competitions, setCompetitions] = useState([]);
+  const [matches, setMatches] = useState([]);
   let btns = useRef("");
-  const changeData = (type, index) => {
-    setTypeApi(type);
-    for (let i = 0; i < 3; i++) {
-      btns.current.children[i].classList.remove("active");
-    }
-    btns.current.children[index - 1].classList.add("active");
+  const matchess = useMediaQuery("(min-width:1200px)");
+  const matches_mobile = useMediaQuery("(max-width:768px)");
+
+  const fetchCompititions = async () => {
+    const response = await getCompetitions("");
+    const europComp = await getCompetitions("id=401");
+    const champComp = await getCompetitions("id=400");
+    setCompetitions([
+      ...response.data.data.slice(0, 5),
+      europComp?.data?.data[0],
+      champComp?.data?.data[0],
+    ]);
   };
 
-  const matches = useMediaQuery("(min-width:1200px)");
-  const matches_mobile = useMediaQuery("(max-width:768px)");
-  const [valueSlide, setValueSlide] = useState(4);
+  const fetchMatches = async () => {
+    const currentSeason = competitions[0]?.currentSeason?.id;
+    const response = await getMatches(
+      `season_id=${currentSeason}&date_from=${date[1]}&date=${date[1]}`
+    );
+    setMatches(response?.data?.data);
+  };
 
-  // useEffect(() => {
-  //   if(matches) setValueSlide(1)
-  //   else setValueSlide(4)
-  // }, [matches])
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchCompititions();
+      if (competitions.length) fetchMatches();
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (competitions.length) fetchMatches();
+  }, [date, competitions]);
+
+  const setMatchesComponent = (matches) => {
+    return matches?.map((match) => (
+      <SwiperSlide className="slide-swiper" key={match?.id}>
+        <Stack direction="column">
+          <Box
+            display="flex"
+            justifyContent="center"
+            paddingTop="22px"
+            marginBottom="5px">
+            <img
+              width="20px"
+              height="20px"
+              src={`https://cdn.so3ody.com/scores/competitions/100x130/${competitions[0]?.id}.png`}
+              alt=""
+            />
+            <Typography marginRight={1}>{competitions[0]?.name}</Typography>
+          </Box>
+
+          <Stack
+            direction="row"
+            justifyContent="space-evenly"
+            alignItems="center">
+            <Box display="flex" flexDirection="column" alignItems="center">
+              <img
+                width="20px"
+                height="20px"
+                src={`https://cdn.so3ody.com/scores/teams/50x50/${match?.teamA?.id}.png`}
+                alt={match?.teamA?.name}
+              />
+              <Typography variant="caption">{match?.teamA?.name}</Typography>
+            </Box>
+
+            <Box>
+              <Typography
+                style={{
+                  color: "#E6B01B",
+                  border: "1px solid #E6B01B",
+                  padding: "3px 17px",
+                  borderRadius: "43%",
+                }}>
+                <div className="teams-score">
+                  <p className="socre">
+                    <span>{match?.scoreA}</span> : <span>{match?.scoreB}</span>
+                  </p>
+                  {/* <p className="note">وقت كامل</p> */}
+                </div>
+              </Typography>
+              <Typography
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  mt: "5px",
+                }}
+                variant="caption">
+                {match?.timing.split(" ")[1]}
+              </Typography>
+            </Box>
+
+            <Box display="flex" flexDirection="column" alignItems="center">
+              <img
+                width="20px"
+                height="20px"
+                src={`https://cdn.so3ody.com/scores/teams/50x50/${match?.teamB?.id}.png`}
+                alt={match?.teamB?.name}
+              />
+              <Typography variant="caption">{match?.teamB?.name}</Typography>
+            </Box>
+          </Stack>
+        </Stack>
+      </SwiperSlide>
+    ));
+  };
 
   return (
     <Box className="mainSwiperComponent">
@@ -75,138 +135,47 @@ const SwiperMatches = () => {
           height="100%"
           justifyContent="space-between"
           textAlign="center">
-          <Button onClick={() => changeData("today", 1)} className="active">
+          <Button
+            className={`btn ${date[0] === "today" ? "active" : ""}`}
+            onClick={() => setDate(["today", todayDate()])}>
             اليوم
           </Button>
-          <Button onClick={() => changeData("tomorow", 2)}>غداً</Button>
-          <Button onClick={() => changeData("today", 3)}>في الأمس</Button>
+          <Button
+            className={`btn ${date[0] === "tomorrow" ? "active" : ""}`}
+            onClick={() => setDate(["tomorrow", tomorrowDate()])}>
+            غداً
+          </Button>
+          <Button
+            className={`btn ${date[0] === "yesterday" ? "active" : ""}`}
+            onClick={() => setDate(["yesterday", yesterdayDate()])}>
+            في الأمس
+          </Button>
+          {/* <Button onClick={() => changeData("today", 1)} className="active">
+            اليوم
+          </Button>
+          <Button onClick={() => changeData("tomorrow", 2)}>غداً</Button>
+          <Button onClick={() => changeData("today", 3)}>في الأمس</Button> */}
         </Stack>
         <Button>كل المباريات</Button>
       </Box>
 
       <Swiper
-        slidesPerView={matches ? 4 : matches_mobile ? 1 : 2}
+        slidesPerView={matchess ? 4 : matches_mobile ? 1 : 2}
         spaceBetween={0}
         freeMode={true}
         navigation={true}
         modules={[FreeMode, Navigation]}
         className="mySwiper">
-        {teams
-          ? teams?.map((el) => (
-              <SwiperSlide className="slide-swiper" key={el.id}>
-                <Stack direction="column">
-                  <Box
-                    display="flex"
-                    justifyContent="center"
-                    paddingTop="22px"
-                    marginBottom="5px">
-                    <img width="20px" height="20px" src={Lego} alt="" />
-                    <Typography marginRight={1}>الدوري الاسباني</Typography>
-                  </Box>
-
-                  <Stack
-                    direction="row"
-                    justifyContent="space-evenly"
-                    alignItems="center">
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-                      alignItems="center">
-                      <img width="20px" height="20px" src={Madrid} alt="" />
-                      <Typography variant="caption">ريال مدريد</Typography>
-                    </Box>
-
-                    <Typography
-                      style={{
-                        color: "#E6B01B",
-                        border: "1px solid #E6B01B",
-                        padding: "3px 17px",
-                        borderRadius: "43%",
-                      }}>
-                      لم تبدأ
-                    </Typography>
-
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-                      alignItems="center">
-                      <img
-                        width="20px"
-                        height="20px"
-                        src={el.imgTeamVs}
-                        alt=""
-                      />
-                      <Typography variant="caption">{el.teamVs}</Typography>
-                    </Box>
-                  </Stack>
-
-                  <Typography
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      width: "102%",
-                    }}
-                    variant="caption">
-                    24:00
-                  </Typography>
-                </Stack>
-              </SwiperSlide>
-            ))
-          : [0, 1, 2, 3, 13, 4, 5, 54].map((e) => (
-              <SwiperSlide className="slide-swiper" key={e}>
-                <Stack direction="column">
-                  <Box
-                    display="flex"
-                    justifyContent="center"
-                    paddingTop="22px"
-                    marginBottom="5px">
-                    <img width="20px" height="20px" src={Lego} alt="" />
-                    <Typography marginRight={1}>تيست</Typography>
-                  </Box>
-
-                  <Stack
-                    direction="row"
-                    justifyContent="space-evenly"
-                    alignItems="center">
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-                      alignItems="center">
-                      <img width="20px" height="20px" src={Madrid} alt="" />
-                      <Typography variant="caption">ريال مدريد</Typography>
-                    </Box>
-
-                    <Typography
-                      style={{
-                        color: "#E6B01B",
-                        border: "1px solid #E6B01B",
-                        padding: "3px 17px",
-                        borderRadius: "43%",
-                      }}>
-                      لم تبدأ
-                    </Typography>
-
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-                      alignItems="center">
-                      <img width="20px" height="20px" src={Madrid} alt="" />
-                      <Typography variant="caption">برشلونة</Typography>
-                    </Box>
-                  </Stack>
-
-                  <Typography
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      width: "102%",
-                    }}
-                    variant="caption">
-                    24:00
-                  </Typography>
-                </Stack>
-              </SwiperSlide>
-            ))}
+        {matches.length === 0 ? (
+          <SwiperSlide
+            style={{
+              color: "#fff",
+            }}>
+            لا يوجد مباريات
+          </SwiperSlide>
+        ) : (
+          setMatchesComponent(matches)
+        )}
       </Swiper>
     </Box>
   );
