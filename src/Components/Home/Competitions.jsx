@@ -9,13 +9,22 @@ const Competitions = () => {
 
   const fetchCompititions = async () => {
     const response = await getCompetitions("");
-    const europComp = await getCompetitions('id=401');
-    const champComp = await getCompetitions('id=400');
-    setCompetitions([...response.data.data.slice(0, 5), europComp?.data?.data[0], champComp?.data?.data[0]]);
+    const europComp = await getCompetitions("id=401");
+    const champComp = await getCompetitions("id=400");
+    setCompetitions([
+      ...response.data.data.slice(0, 5),
+      europComp?.data?.data[0],
+      champComp?.data?.data[0],
+    ]);
   };
 
   useEffect(() => {
-    fetchCompititions();
+    const interval = setInterval(() => {
+      fetchCompititions();
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   return (
