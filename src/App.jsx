@@ -5,6 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import router from "./Router";
 import { getToken } from "./Services/index";
 import { useQuery } from "@tanstack/react-query";
+import { prefix } from "./Utils";
 
 function App() {
   const { REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET, REACT_APP_GRANT_TYPE } =
@@ -39,7 +40,7 @@ function App() {
   // }, []);
 
   return (
-    <div className="App">
+    <div className={`${prefix}App`}>
       <RouterProvider router={router} />
     </div>
   );

@@ -26,7 +26,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && postcss build/static/css/*.css --dir build/static/css",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -47,5 +47,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "postcss": "^8.4.18",
+    "postcss-cli": "^10.0.0",
+    "postcss-prefixer": "^2.1.3"
   }
 }
