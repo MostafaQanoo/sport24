@@ -315,7 +315,7 @@ const RangeTeamsGoals = () => {
                           width: "15%",
                           textAlign: "center",
                         }}>
-                        5
+                        {player?.count}
                       </td>
                       <td style={{ width: "35%" }}>{player?.team_name}</td>
                     </tr>
