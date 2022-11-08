@@ -35,8 +35,7 @@ const SideInfo = () => {
               alignItems: "center",
               justifyContent: "start",
               padding: "8px 5px",
-              borderBottom: "1px solid rgb(225 225 225)",
-            }}>
+            }} className="border-bottom-teams">
             <img
               src={`https://cdn.so3ody.com/scores/competitions/100x130/${compitition?.id}.png`}
               alt=""
