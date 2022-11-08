@@ -8,12 +8,16 @@ import PersonPinCircleOutlinedIcon from "@mui/icons-material/PersonPinCircleOutl
 import TableData from "../content/TableDate";
 import calculateAge from "../../Utils/calculateAge";
 
-const MainInfo = ({ player }) => {
+const MainInfo = ({ player, playerData }) => {
   return (
     <Box flex="3">
       <Box className="player">
         <Stack color="#fff">
-          <img src={`https://cdn.so3ody.com/scores/people/50x50/${player?.id}.png`} alt={player?.name} className='player-img' />
+          <img
+            src={`https://cdn.so3ody.com/scores/people/50x50/${player?.id}.png`}
+            alt={player?.name}
+            className="player-img"
+          />
           <h5>{player?.name}</h5>
           <Stack
             width="96%"
@@ -35,7 +39,9 @@ const MainInfo = ({ player }) => {
                 fontSize="20px"
                 style={{ margin: "-10px 0 0 6px", color: "#d2d2d2" }}
               />
-              <Typography variant="p">{player?.name && player?.memberships[0]?.teamName}</Typography>
+              <Typography variant="p">
+                {player?.name && player?.memberships[0]?.teamName}
+              </Typography>
             </Box>
 
             <Box width="20%" display="flex" alignItems="center">
@@ -43,7 +49,10 @@ const MainInfo = ({ player }) => {
                 fontSize="20px"
                 style={{ margin: "-10px 0 0 6px", color: "#d2d2d2" }}
               />
-              <Typography variant="p"> العمر:{calculateAge(player?.birthDate)} سنة </Typography>
+              <Typography variant="p">
+                {" "}
+                العمر:{calculateAge(player?.birthDate)} سنة{" "}
+              </Typography>
             </Box>
 
             <Box width="20%" display="flex" alignItems="center">
@@ -56,7 +65,7 @@ const MainInfo = ({ player }) => {
           </Stack>
         </Stack>
       </Box>
-      <TableData />
+      <TableData playerData={playerData} />
     </Box>
   );
 };
