@@ -28,11 +28,10 @@ const SwiperMatches = () => {
       champComp?.data?.data[0],
     ]);
   };
-
   const fetchMatches = async () => {
     const currentSeason = competitions[0]?.currentSeason?.id;
     const response = await getMatches(
-      `season_id=${currentSeason}&date_from=${date[1]}&date=${date[1]}`
+      `season_id=${currentSeason}&date_from=${date[3]}&date=${date[1]}`
     );
     setMatches(response?.data?.data);
   };

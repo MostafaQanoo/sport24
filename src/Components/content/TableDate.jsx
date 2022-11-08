@@ -56,11 +56,11 @@ function TableData() {
               }}>
               <td style={{ padding: 10 }}>1</td>
               <td style={{ padding: 10 }}>Alfreds Futterkiste</td>
-              <td style={{ padding: 10 }}>55</td>
-              <td style={{ padding: 10 }}>55</td>
-              <td style={{ padding: 10 }}>55</td>
-              <td style={{ padding: 10 }}>55</td>
-              <td style={{ color: "red", padding: 10 }}>55</td>
+              <td style={{ padding: 10 }}>0</td>
+              <td style={{ padding: 10 }}>0</td>
+              <td style={{ padding: 10 }}>0</td>
+              <td style={{ padding: 10 }}>0</td>
+              <td style={{ color: "red", padding: 10 }}>0</td>
             </tr>
           ))}
         </tbody>
