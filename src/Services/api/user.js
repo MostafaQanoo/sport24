@@ -2,7 +2,7 @@ import axiosRequest from "./request";
 
 export const getToken = (data) => axiosRequest("post", "/oauth/token", data);
 export const getTeams = () => axiosRequest("get", "/teams");
-export const getSingleTeam = (id) => axiosRequest("get",`/team/${id}`);
+export const getSingleTeam = (id) => axiosRequest("get", `/team/${id}`);
 export const getCompetitions = (params) =>
   axiosRequest("get", `/competitions?${params}`);
 export const getMatches = (params) => axiosRequest("get", `/matches?${params}`);
@@ -25,10 +25,18 @@ export const getSinglePlayer = (params) =>
   axiosRequest("get", `/getSinglePeople?${params}`);
 export const getPlayerTransfer = (params) =>
   axiosRequest("get", `/people/transfers?${params}`);
-export  const getSquad = (params) => axiosRequest("get", `/team/squad?${params}`);
+export const getSquad = (params) =>
+  axiosRequest("get", `/team/squad?${params}`);
 export const getAllStats = (params) =>
   axiosRequest("get", `/team/top/all/event/achiver?${params}`);
 export const getTeamStats = (params) =>
   axiosRequest("get", `/team/statistics?${params}`);
 export const getGoalers = (params) =>
   axiosRequest("get", `/people/top/event/achiver?event=goal&${params}`);
+export const getPlayerChampionships = (params) =>
+  axiosRequest("get", `/people/played/competitions?people_id=${params}`);
+export const getChampionshipsData = ({ playerId, seasonId }) =>
+  axiosRequest(
+    "get",
+    `/people/season/statictics?people_id=${playerId}&season_id=${seasonId}`
+  );
