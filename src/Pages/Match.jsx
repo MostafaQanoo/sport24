@@ -128,7 +128,7 @@ const Match = () => {
               </Box>
               <Box className="card-box">
                 <img src={calender} alt="calender" />
-                <p>{headToHead?.timing}</p>
+                <p>{headToHead?.timing.split(' ')[0]}</p>
               </Box>
             </Box>
           </div>
