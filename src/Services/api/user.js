@@ -26,3 +26,9 @@ export const getSinglePlayer = (params) =>
 export const getPlayerTransfer = (params) =>
   axiosRequest("get", `/people/transfers?${params}`);
 export  const getSquad = (params) => axiosRequest("get", `/team/squad?${params}`);
+export const getAllStats = (params) =>
+  axiosRequest("get", `/team/top/all/event/achiver?${params}`);
+export const getTeamStats = (params) =>
+  axiosRequest("get", `/team/statistics?${params}`);
+export const getGoalers = (params) =>
+  axiosRequest("get", `/people/top/event/achiver?event=goal&${params}`);

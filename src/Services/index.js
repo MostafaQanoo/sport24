@@ -12,4 +12,7 @@ export {
   getPlayerTransfer,
   getSingleTeam,
   getSquad,
+  getAllStats,
+  getTeamStats,
+  getGoalers,
 } from "./api/index";
