@@ -301,9 +301,11 @@ tr {
   justify-content: center;
   gap: 10px;
 }
-
+.css-1aquho2-MuiTabs-indicator{
+  height: 1px !important;
+}
 .page-banner {
-  height: 335px;
+  height: 355px;
   width: 100%;
   background-image: url(../assets/images/header-back.png);
   background-size: cover;
@@ -375,9 +377,10 @@ tr {
 }
 
 .blur-card {
-  background-color: #ffffff10;
+  background-color: #ffffff1b;
+  backdrop-filter: blur(10px);
   border-radius: 10px;
-  padding: 10px;
+  padding: 1rem 4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;

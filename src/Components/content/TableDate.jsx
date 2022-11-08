@@ -17,6 +17,8 @@ function TableData({ playerData }) {
     }
   }, [playerData]);
 
+  console.log(playerDataState);
+
   return (
     <div style={{ width: "100%", marginBottom: "2rem", marginTop: "2rem" }}>
       <table style={{ width: "100%" }}>
