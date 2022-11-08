@@ -15,4 +15,6 @@ export {
   getAllStats,
   getTeamStats,
   getGoalers,
+  getPlayerChampionships,
+  getChampionshipsData,
 } from "./user";
