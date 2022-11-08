@@ -49,12 +49,15 @@ ul {
 
 .MuiAlert-icon.css-1ytlwq5-MuiAlert-icon {
   display: none;
+  border-radius: 0;
 }
 
 .MuiAlert-message {
   display: flex;
   width: 50%;
   align-items: center;
+  border-radius: 0;
+
 }
 .MuiAlert-message p {
   margin: 0;
@@ -350,6 +353,20 @@ tr {
   font-weight: bold;
   font-size: 1.3rem;
   margin-bottom: 1rem;
+  width: 10%;
+}
+.border-bottom- {
+  width: 90%;
+  border-bottom: 1px solid #ccc;
+}
+@media screen and (max-width: 768px) {
+  .sec-title {
+    width: 100%;
+  }
+  .border-bottom- {
+    border-bottom: 0;
+    display: none;
+  }
 }
 .card-box {
   display: flex;
@@ -591,7 +608,7 @@ table .css-1ex1afd-MuiTableCell-root {
 }
 .teams-sec .single-slide img {
   display: inline-block;
-  width: 80px;
+  width: 60px;
 }
 .teams-sec .single-slide .icon {
   position: absolute;
@@ -709,9 +726,11 @@ table .css-1ex1afd-MuiTableCell-root {
 .sidebar-tabs.MuiTabs-root {
   height: 30px !important;
   background-color: #eeeeee;
-  margin: 0 10px;
+  margin: 0 auto;
   margin-bottom: 10px;
   border-radius: 100vmax;
+  width: 70%;
+  text-align: center
 }
 
 .sidebar-tabs .MuiButtonBase-root {
@@ -985,4 +1004,11 @@ table .css-1ex1afd-MuiTableCell-root {
   .css-15uckw6 {
     width: auto;
   }
+}
+
+.border-bottom-teams {
+  border-bottom: 1px solid rgb(225 225 225);
+}
+.border-bottom-teams:last-child {
+  border-bottom: 0px;
 }

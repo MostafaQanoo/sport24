@@ -38,7 +38,7 @@ const Navbar = () => {
               <span>تقنية</span>
             </li>
             <li>
-              <span>تجارة واسوق</span>
+              <span>تجارة </span>
             </li>
             <li>
               <span>منوعات</span>
@@ -65,17 +65,17 @@ const Navbar = () => {
                 <AccountCircle />
               </IconButton>
 
-              <IconButton size='large' aria-label='search' color='inherit'>
-                <SearchIcon />
+              <IconButton size='large' aria-label='search' color='inherit' >
+                <SearchIcon className="searchIcon" />
               </IconButton>
             </li>
           </List>
         </Stack>
-      </Box>
+      </Box> 
 
       <Alert
         className='alert-mui'
-        sx={{ background: '#234EC4', color: '#e4e4e4', marginBottom: '20px' }}
+        sx={{ background: '#234EC4', color: '#e4e4e4', marginBottom: '20px', borderRadius: '0' }}
       >
         <span>اليوم | </span>
         <Typography>

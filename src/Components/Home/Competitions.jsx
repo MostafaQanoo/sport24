@@ -12,19 +12,20 @@ const Competitions = () => {
     const europComp = await getCompetitions("id=401");
     const champComp = await getCompetitions("id=400");
     setCompetitions([
-      ...response.data.data.slice(0, 5),
+      ...response?.data?.data?.slice(0, 5),
       europComp?.data?.data[0],
       champComp?.data?.data[0],
     ]);
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      fetchCompititions();
-    }, 1000);
-    return () => {
-      clearInterval(interval);
-    };
+    // const interval = setInterval(() => {
+    //   fetchCompititions();
+    // }, 1000);
+    // return () => {
+    //   clearInterval(interval);
+    // };
+    fetchCompititions();
   }, []);
 
   return (
@@ -48,13 +49,15 @@ const Competitions = () => {
       </div>
 
       <div className="compititons">
-        {competitions?.map((compitition, index) => (
-          <SingleCompitition
-            key={index}
-            compitition={compitition}
-            date={date[1]}
-          />
-        ))}
+        {competitions.length === 0
+          ? null
+          : competitions?.map((compitition, index) => (
+              <SingleCompitition
+                key={index}
+                compitition={compitition}
+                date={date[1]}
+              />
+            ))}
       </div>
     </section>
   );
