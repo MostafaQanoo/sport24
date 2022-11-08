@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { getTeams } from '../../Services';
+import { Alert, Box } from '@mui/material';
+
 
 const TeamsSlider = () => {
   const [teams, setTeams] = useState([]);
@@ -17,14 +19,17 @@ const TeamsSlider = () => {
 
   return (
     <section className='teams-sec'>
-      <h3 className='sec-title'>الفِرق</h3>
+      <Box sx={{ display:"flex", justifyContent: "spaceBetween", alignItems: "center" }}>
+        <h3 className='sec-title'>الفِرق</h3>
+        <p class="border-bottom-"></p>
+      </Box>
       <Splide
         options={{
           perPage: 4,
           drag: true,
           direction: 'rtl',
           pagination: false,
-          gap: '1rem',
+          gap: '.8rem',
           breakpoints: {
             1000: {
               perPage: 3,
