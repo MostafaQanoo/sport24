@@ -4,11 +4,11 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import { Box, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { useState, useEffect } from "react";
-import { player } from "../../assets/images";
 import { useQuery } from "@tanstack/react-query";
 import {
   getOrderCompetitions,
   getCompetitions,
+  getGoalers,
 } from "./../../Services/api/user";
 import { Link } from "react-router-dom";
 import RTL from "../RTL";
@@ -32,11 +32,23 @@ const RangeTeamsGoals = () => {
     setCompetitions([...response.data.data.slice(0, 5)]);
   };
 
+  const [goalers, setGoalers] = useState([]);
+
+  useEffect(() => {
+    const fetchTable = async () => {
+      const response = await getGoalers(
+        `season_id=${seasonId}`
+      );
+      setGoalers(response?.data?.data);
+    };
+    fetchTable();
+  }, [seasonId]);
+
+  console.log(goalers);
+
   useEffect(() => {
     fetchCompititions();
   }, []);
-
-  let array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
   const { data: competitionsData, isLoading } = useQuery(
     ["OrderCompetitions", seasonId],
@@ -263,7 +275,7 @@ const RangeTeamsGoals = () => {
                       النادي
                     </th>
                   </tr>
-                  {array.map((e) => (
+                  {goalers.map((player) => (
                     <tr
                       key={uuidv4()}
                       style={{
@@ -294,8 +306,8 @@ const RangeTeamsGoals = () => {
                             alignItems: "center",
                             gap: "8px",
                           }}>
-                          <img width={"30px"} src={player} alt="player" />
-                          <span>محمد صلاح</span>
+                          <img width={"30px"} src={`https://cdn.so3ody.com/scores/people/50x50/${player?.player_id}.png`} alt="player" />
+                          <span>{player?.name}</span>
                         </Box>
                       </td>
                       <td
@@ -305,7 +317,7 @@ const RangeTeamsGoals = () => {
                         }}>
                         5
                       </td>
-                      <td style={{ width: "35%" }}>الهلال السعودي</td>
+                      <td style={{ width: "35%" }}>{player?.team_name}</td>
                     </tr>
                   ))}
                 </tbody>

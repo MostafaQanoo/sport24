@@ -563,6 +563,7 @@ table .css-1ex1afd-MuiTableCell-root {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-direction: row;
 }
 .item .team img {
   width: 45px;
