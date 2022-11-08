@@ -40,7 +40,7 @@ const Team = () => {
         <main>
           <Box className='player'>
             <Stack color='#fff'>
-              <img src={`https://cdn.so3ody.com/scores/teams/50x50/${id}.png`} alt={team?.name} width={80} />
+              <img src={`https://cdn.so3ody.com/scores/teams/50x50/${id}.png`} alt={team?.name} width={80}/>
               <Typography variant='h6'>{team?.name}</Typography>
               <Stack
                 width='96%'
