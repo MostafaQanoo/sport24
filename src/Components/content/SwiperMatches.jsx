@@ -23,7 +23,7 @@ const SwiperMatches = () => {
     const europComp = await getCompetitions("id=401");
     const champComp = await getCompetitions("id=400");
     setCompetitions([
-      ...response.data.data.slice(0, 5),
+      ...response?.data?.data?.slice(0, 5),
       europComp?.data?.data[0],
       champComp?.data?.data[0],
     ]);
@@ -38,14 +38,16 @@ const SwiperMatches = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      fetchCompititions();
-      if (competitions.length) fetchMatches();
-    }, 1000);
+    // const interval = setInterval(() => {
+    //   fetchCompititions();
+    //   if (competitions.length) fetchMatches();
+    // }, 1000);
 
-    return () => {
-      clearInterval(interval);
-    };
+    // return () => {
+    //   clearInterval(interval);
+    // };
+    fetchCompititions();
+    if (competitions.length) fetchMatches();
   }, []);
 
   useEffect(() => {

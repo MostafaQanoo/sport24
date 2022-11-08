@@ -29,16 +29,14 @@ const RangeTeamsGoals = () => {
   const fetchCompititions = async () => {
     const response = await getCompetitions("");
 
-    setCompetitions([...response.data.data.slice(0, 5)]);
+    setCompetitions([...response?.data?.data?.slice(0, 5)]);
   };
 
   const [goalers, setGoalers] = useState([]);
 
   useEffect(() => {
     const fetchTable = async () => {
-      const response = await getGoalers(
-        `season_id=${seasonId}`
-      );
+      const response = await getGoalers(`season_id=${seasonId}`);
       setGoalers(response?.data?.data);
     };
     fetchTable();
@@ -81,7 +79,7 @@ const RangeTeamsGoals = () => {
                 value={seasonId}
                 label="الترتيب"
                 onChange={handleChangeSelect}>
-                {competitions.map((competition, index) => {
+                {competitions?.map((competition, index) => {
                   return (
                     <MenuItem
                       key={uuidv4()}
@@ -180,7 +178,7 @@ const RangeTeamsGoals = () => {
                   </th>
                 </tr>
 
-                {competitionsData?.data?.data?.table.map((item, index) => (
+                {competitionsData?.data?.data?.table?.map((item, index) => (
                   <tr
                     key={uuidv4()}
                     style={{
@@ -275,7 +273,7 @@ const RangeTeamsGoals = () => {
                       النادي
                     </th>
                   </tr>
-                  {goalers.map((player) => (
+                  {goalers?.map((player) => (
                     <tr
                       key={uuidv4()}
                       style={{
@@ -306,7 +304,11 @@ const RangeTeamsGoals = () => {
                             alignItems: "center",
                             gap: "8px",
                           }}>
-                          <img width={"30px"} src={`https://cdn.so3ody.com/scores/people/50x50/${player?.player_id}.png`} alt="player" />
+                          <img
+                            width={"30px"}
+                            src={`https://cdn.so3ody.com/scores/people/50x50/${player?.player_id}.png`}
+                            alt="player"
+                          />
                           <span>{player?.name}</span>
                         </Box>
                       </td>
