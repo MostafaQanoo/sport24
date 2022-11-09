@@ -40,3 +40,4 @@ export const getChampionshipsData = ({ playerId, seasonId }) =>
     "get",
     `/people/season/statictics?people_id=${playerId}&season_id=${seasonId}`
   );
+
